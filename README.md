@@ -27,7 +27,7 @@ You only need to do this each time the network changes. Sometimes dynamic IP add
 
 Open Terminal and run `ifconfig` . Find the IP address of the computer on the current WiFi network (probably labeled with `en0` in front of it).
 
- [img here]
+![ifconfig](https://raw.githubusercontent.com/jasoncharney/syllabary/master/readme-imgs/ifconfig.png)
 
 Change the `hostIP` entry in `ports.JSON` (be sure to keep the quotes around it) and save. You can also change the ports here if they are being used by other applications.
 
