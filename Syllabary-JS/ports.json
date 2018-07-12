@@ -1,5 +1,5 @@
 {
-    "hostIP": "10.0.0.21",
+    "hostIP": "10.1.10.55",
     "expressPort": 3000,
     "maxSendPort": 3333,
     "maxListenPort": 3335
