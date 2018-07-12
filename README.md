@@ -31,7 +31,7 @@ Open Terminal and run `ifconfig` . Find the IP address of the computer on the cu
 
 Change the `hostIP` entry in `ports.JSON` (be sure to keep the quotes around it) and save. You can also change the ports here if they are being used by other applications.
 
-[img here]
+![ports](https://raw.githubusercontent.com/jasoncharney/syllabary/master/readme-imgs/ports.png)
 
 Open `Syllabary-Max.maxproj` project in Max. Only `Syllabary.maxpat` should open.
 
@@ -49,17 +49,15 @@ In terminal, `cd` to the folder where `SyllabaryServer.js` is located. Enter:
 
 If the server is running and ready, the patch should show the server status as "ON".
 
-[image]
-
 **On each device:**
 1. Make sure you're on the same WiFi network as the server.
 2. Open a browser window with the device in landscape orientation. Navigate to the address formatted like this (hostIP and expressPort taken from `ports.json`:
 
         hostIP:expressPort
 
-[image]
+![readerinit](https://raw.githubusercontent.com/jasoncharney/syllabary/master/readme-imgs/ipadinit.jpeg)
 
-You should see a black screen and three buttons with your names on them. Press your name to link your device. The piece cannot begin unless three unique readers are connected.
+You should see a black screen and three buttons with your names on them. Press your name to link your device. The piece cannot begin unless three unique readers are connected (view connection status in patch). The START button will appear when all three users are connected.
 
 ---
 
