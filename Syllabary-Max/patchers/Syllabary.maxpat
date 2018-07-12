@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ -240.0, -986.0, 941.0, 934.0 ],
+		"rect" : [ -149.0, -986.0, 941.0, 934.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -205,16 +205,17 @@
 			}
 , 			{
 				"box" : 				{
+					"fontname" : "Garamond",
 					"fontsize" : 48.0,
 					"id" : "obj-8",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 6.0, 296.0, 60.0 ],
+					"patching_rect" : [ 15.0, 6.0, 174.0, 60.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 15.0, 6.0, 296.0, 60.0 ],
+					"presentation_rect" : [ 15.0, 6.0, 174.0, 60.0 ],
 					"style" : "",
-					"text" : "SYLLABARY"
+					"text" : "syllabary"
 				}
 
 			}
@@ -234,7 +235,7 @@
 					"offset" : [ 0.0, 0.0 ],
 					"patching_rect" : [ 27.0, 261.0, 307.0, 145.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 21.25, 171.0, 285.0, 139.0 ],
+					"presentation_rect" : [ 8.5, 164.5, 285.0, 139.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -300,9 +301,9 @@
 			}
  ],
 		"parameters" : 		{
+			"obj-6::obj-27" : [ "live.text[2]", "live.text", 0 ],
 			"obj-6::obj-13" : [ "live.text", "live.text", 0 ],
 			"obj-6::obj-26" : [ "live.text[1]", "live.text", 0 ],
-			"obj-6::obj-27" : [ "live.text[2]", "live.text", 0 ],
 			"obj-6::obj-28" : [ "live.text[3]", "live.text", 0 ]
 		}
 ,
