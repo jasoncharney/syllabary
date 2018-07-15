@@ -1,0 +1,3 @@
+# 0 - off
+# 1 - Basic Synchronization Test
+Gridlines show eighth notes. Beat scrolls across top. Play pattern of filled in beats...
