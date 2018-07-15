@@ -11,7 +11,7 @@
 
     [signal diagram]
 ---
-### Installation:
+### Installation: 
 
 Download this repository as a zip file. Unzip and move the whole folder to the desired directory, but leave the unzipped folder organized as it is.
 
@@ -21,21 +21,21 @@ Download this repository as a zip file. Unzip and move the whole folder to the d
 
 ### Initial setup:
 
-***Update host IP:*** 
+***Update ports file:*** 
 
-You only need to do this each time the network changes. Sometimes dynamic IP addresses will be assigned, but the address should be stable as long as the server device remains connected (you can check with the `ifconfig` command). You can skip this if you have a static IP or aren't reconfiguring the network.
+You only have to do this once if you have a static IP or aren't changing WiFi networks. If the computer running the Syllabary server remains connected to the same network it should remain stable.
 
 Open Terminal and run `ifconfig` . Find the IP address of the computer on the current WiFi network (probably labeled with `en0` in front of it).
 
 ![ifconfig](https://raw.githubusercontent.com/jasoncharney/syllabary/master/readme-imgs/ifconfig.png)
 
-Change the `hostIP` entry in `ports.JSON` (be sure to keep the quotes around it) and save. You can also change the ports here if they are being used by other applications.
+Change the `hostIP` entry in `ports.JSON` and save .
 
 ![ports](https://raw.githubusercontent.com/jasoncharney/syllabary/master/readme-imgs/ports.png)
 
 Open `Syllabary-Max.maxproj` project in Max. Only `Syllabary.maxpat` should open.
 
-***On first open or if you move the project directory:** Drag and drop the `ports.JSON` file into the filedrop area in `Syllabary.maxpat` so it can reference the correct filepath. Refresh the project and make sure there's no errors thrown in the Max window.*
+***On first open:** Drag and drop the `ports.JSON` file from the /Syllabary-JS folder into the area in `Syllabary.maxpat`. Refresh the project and make sure there are no errors thrown in the Max window.*
 
 ---
 
@@ -43,13 +43,13 @@ Open `Syllabary-Max.maxproj` project in Max. Only `Syllabary.maxpat` should open
 
 **Run the server on the host computer:**
 
-In terminal, `cd` to the folder where `SyllabaryServer.js` is located. Enter:
+In terminal, `cd` to  [/Syllabary-JS/](/Syllabary-JS/). Enter:
  
     node SyllabaryServer.js
 
 If the server is running and ready, the patch should show the server status as "ON".
 
-**On each device:**
+**On each reader device:**
 1. Make sure you're on the same WiFi network as the server.
 2. Open a browser window with the device in landscape orientation. Navigate to the address formatted like this (hostIP and expressPort taken from `ports.json`:
 
