@@ -5,10 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width = device-width, initial-scale = 1.0, minimum-scale = 1, maximum-scale = 1, user-scalable = no"
   />
-  <meta name="LightWeb" content="onlyWebPro" />
+  <meta name="Syllabary" content="onlyWebPro" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <title>Syllabary</title>
+  <canvas id="staff"></canvas>
   <script src="libraries/p5.js"></script>
   <script src="libraries/p5.dom.min.js"></script>
   <script src="libraries/p5.sound.min.js"></script>
@@ -16,7 +17,10 @@
   <script src="libraries/p5.func.js"></script>
   <script src="libraries/Tone.js"></script>
   <script src="libraries/StartAudioContext.js"></script>
-  <script src="syllabary.js"></script>
+  <script src="libraries/vexflow.js"></script>
+  <script src="Syllabary.js"></script>
+  <script src="Initialization.js"></script>
+
   <style type="text/css">
     body {
       margin: 0;
@@ -26,6 +30,11 @@
 
     canvas {
       display: block;
+      position: absolute;
+    }
+
+    div {
+      position: absolute;
     }
 
     canvas:focus {
@@ -47,5 +56,7 @@
     }
   </style>
 </head>
+
+
 
 </html>
