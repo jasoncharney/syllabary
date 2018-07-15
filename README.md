@@ -7,9 +7,10 @@
 ### Requirements:
 - Three score reading revices (tablets or laptops at stations)
 - A computer running the Max patch and Node Express server (can be one of the score readers).
-- A stable WiFi network (prefereably a local one to decrease latency)
+- A stable WiFi network (prefereably an adhoc or local wireless router to decrease latency)
 
-    [signal diagram]
+![Signal routing](https://raw.githubusercontent.com/jasoncharney/syllabary/master/readme-imgs/signaldiagram.png)
+
 ---
 ### Installation: 
 
@@ -21,21 +22,21 @@ Download this repository as a zip file. Unzip and move the whole folder to the d
 
 ### Initial setup:
 
-***Update ports file:*** 
+***Find IP address and update ports file*** 
 
-You only have to do this once if you have a static IP or aren't changing WiFi networks. If the computer running the Syllabary server remains connected to the same network it should remain stable.
+You only have to do this once if you have a static IP or aren't changing WiFi networks. If the computer running the Syllabary server remains connected to the same network it should remain stable. But, it doesn't hurt to check each time. 
 
 Open Terminal and run `ifconfig` . Find the IP address of the computer on the current WiFi network (probably labeled with `en0` in front of it).
 
 ![ifconfig](https://raw.githubusercontent.com/jasoncharney/syllabary/master/readme-imgs/ifconfig.png)
 
-Change the `hostIP` entry in `ports.JSON` and save .
+Change the `hostIP` entry in [ports.json]() and save .
 
 ![ports](https://raw.githubusercontent.com/jasoncharney/syllabary/master/readme-imgs/ports.png)
 
-Open `Syllabary-Max.maxproj` project in Max. Only `Syllabary.maxpat` should open.
+Open [Syllabary-Max.maxproj]() project in Max. Only `Syllabary.maxpat` should open.
 
-***On first open:** Drag and drop the `ports.JSON` file from the /Syllabary-JS folder into the area in `Syllabary.maxpat`. Refresh the project and make sure there are no errors thrown in the Max window.*
+***On first open:** Drag and drop the `ports.JSON` file from [/Syllabary-JS/](/Syllabary-JS/) into the area in `[Syllabary-Max.maxpat](). Refresh the project and make sure there are no errors thrown in the Max window.*
 
 ---
 
@@ -43,7 +44,7 @@ Open `Syllabary-Max.maxproj` project in Max. Only `Syllabary.maxpat` should open
 
 **Run the server on the host computer:**
 
-In terminal, `cd` to  [/Syllabary-JS/](/Syllabary-JS/). Enter:
+In Terminal, `cd` to  [/Syllabary-JS/](/Syllabary-JS/). Enter:
  
     node SyllabaryServer.js
 
