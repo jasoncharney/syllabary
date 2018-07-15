@@ -36,7 +36,7 @@ Change the `hostIP` entry in [ports.json]() and save .
 
 Open [Syllabary-Max.maxproj]() project in Max. Only `Syllabary.maxpat` should open.
 
-***On first open:** Drag and drop the `ports.JSON` file from [/Syllabary-JS/](/Syllabary-JS/) into the area in `[Syllabary-Max.maxpat](). Refresh the project and make sure there are no errors thrown in the Max window.*
+***On first open:** Drag and drop the `ports.JSON` file from [/Syllabary-JS/](/Syllabary-JS/) into the area in `Syllabary-Max.maxpat`. Refresh the project and make sure there are no errors thrown in the Max window.*
 
 ---
 
@@ -52,7 +52,7 @@ If the server is running and ready, the patch should show the server status as "
 
 **On each reader device:**
 1. Make sure you're on the same WiFi network as the server.
-2. Open a browser window with the device in landscape orientation. Navigate to the address formatted like this (hostIP and expressPort taken from `ports.json`:
+2. Open a browser window with the device in landscape orientation. Navigate to the address formatted like this (hostIP and expressPort taken from `ports.json`):
 
         hostIP:expressPort
 
