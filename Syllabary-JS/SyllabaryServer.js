@@ -16,7 +16,9 @@ var client = io.of('/client');
 
 //user arrays/modes
 var connectedUsers = new Array();
-
+var grid0;
+var grid1;
+var grid2;
 
 //listens to OSC from Max, sends over websockets to client.
 var oscServer = new osc.Server(connectSettings.maxSendPort, connectSettings.hostIP);
@@ -32,6 +34,21 @@ oscServer.on('mode', function (msg, rinfo) {
     client.emit('mode', msg[1]);
 });
 
+oscServer.on('grid8', function (msg, rinfo) {
+    msg.shift();
+    grid0 = msg;
+    grid1 = msg.splice(0, 8);
+    grid2 = msg.splice(0, 8);
+    client.to(connectedUsers[0]).emit('grid8', grid0);
+    client.to(connectedUsers[1]).emit('grid8', grid1);
+    client.to(connectedUsers[2]).emit('grid8', grid2);
+    // for (var i = 0; i < 8; i++) {
+    //     client.to(connectedUsers[i]).emit('grid8', msg[i]);
+    //     console.log(msg[i]);
+    // }
+    //client.emit('mode', msg[1]);
+});
+
 client.on('connection', onConnect);
 
 function onConnect(socket) {
@@ -40,7 +57,9 @@ function onConnect(socket) {
     var socketID = socket.id;
 
     //connectedUsers.push(socketID);
-
+    client.to(connectedUsers[0]).emit('grid8', grid0);
+    client.to(connectedUsers[1]).emit('grid8', grid1);
+    client.to(connectedUsers[2]).emit('grid8', grid2);
     //client sends message in order to receive initializing information
     socket.on('instrument', function (msg) {
         if (msg == 0) {
