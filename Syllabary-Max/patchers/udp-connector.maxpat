@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ -12.0, -947.0, 948.0, 744.0 ],
+		"rect" : [ 171.0, 103.0, 948.0, 744.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -159,7 +159,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 400.0, 427.0, 177.0, 22.0 ],
+					"patching_rect" : [ 400.0, 426.0, 177.0, 22.0 ],
 					"style" : "",
 					"text" : "s numberOfConnectedReaders"
 				}

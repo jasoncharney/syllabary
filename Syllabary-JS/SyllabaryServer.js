@@ -42,11 +42,6 @@ oscServer.on('grid8', function (msg, rinfo) {
     client.to(connectedUsers[0]).emit('grid8', grid0);
     client.to(connectedUsers[1]).emit('grid8', grid1);
     client.to(connectedUsers[2]).emit('grid8', grid2);
-    // for (var i = 0; i < 8; i++) {
-    //     client.to(connectedUsers[i]).emit('grid8', msg[i]);
-    //     console.log(msg[i]);
-    // }
-    //client.emit('mode', msg[1]);
 });
 
 client.on('connection', onConnect);
