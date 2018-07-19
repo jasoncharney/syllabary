@@ -7,8 +7,29 @@ var grid8;
 var grid8Accents = new Array;
 var articFont;
 var percussionFont;
+var startTime;
+var latency;
+var delayForSync = 1; //the amount to delay to compensate for latency
+var maxLatency;
 
 socket = io('/client');
+
+setInterval(function () {
+    startTime = Date.now();
+    socket.emit('pi');
+}, 2000);
+
+socket.on('po', function () {
+    latency = Date.now() - startTime;
+    socket.emit('latency', latency);
+});
+
+socket.on('maxLatency', function (msg) {
+    maxLatency = msg;
+    if (msg < latency) {
+        delayForSync = maxLatency - latency;
+    }
+});
 
 socket.on('sync', function (msg) {
     syncDisplay = msg;
@@ -43,6 +64,7 @@ function setup() {
 
 function draw() {
     background(0);
+    displayLatency();
     if (initialized) {
         if (mode === 'syncTest') {
             syncDraw();
@@ -61,7 +83,16 @@ function draw() {
     }
 }
 
+function displayLatency() {
+    fill(255);
+    noStroke();
+    textSize(10);
+    setTimeout(latencyText, delayForSync); // won't work in draw (every frame)
+}
 
+function latencyText() {
+    text('latency' + ' ' + str(latency), width / 2, height - 10);
+}
 
 function windowResized() {
     resizeCanvas(window.innerWidth, window.innerHeight);

@@ -16,6 +16,8 @@ var client = io.of('/client');
 
 //user arrays/modes
 var connectedUsers = new Array();
+var latencies = new Array();
+var latencyMax;
 var grid0;
 var grid1;
 var grid2;
@@ -51,6 +53,15 @@ function onConnect(socket) {
     //When user disconnects, remove them from the array.
     var socketID = socket.id;
 
+    socket.on('pi', function () {
+        socket.emit('po');
+    });
+
+    socket.on('latency', function (msg) {
+        calculateLatencies(msg)
+        socket.emit('maxLatency', latencyMax);
+    });
+
     //connectedUsers.push(socketID);
     client.to(connectedUsers[0]).emit('grid8', grid0);
     client.to(connectedUsers[1]).emit('grid8', grid1);
@@ -74,4 +85,15 @@ function onConnect(socket) {
     socket.on('disconnect', function () {
         oscClient.send('/instrumentConnections', [connectedUsers.indexOf(socket.id), 0]);
     });
+}
+
+function calculateLatencies(msg) {
+    var addLatency = msg;
+    if (latencies.length <= 5) {
+        latencies.push(msg);
+    }
+    latencyMax = Math.max.apply(Math, latencies);
+    if (latencies.length >= 5) {
+        latencies.shift();
+    }
 }
