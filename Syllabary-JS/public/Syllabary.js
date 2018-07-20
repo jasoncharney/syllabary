@@ -9,8 +9,10 @@ var articFont;
 var percussionFont;
 var startTime;
 var latency;
-var delayForSync = 1; //the amount to delay to compensate for latency
+var delayForSync; //the amount to delay to compensate for latency
 var maxLatency;
+var tempo;
+var beat;
 
 socket = io('/client');
 
@@ -24,16 +26,39 @@ socket.on('po', function () {
     socket.emit('latency', latency);
 });
 
+socket.on('tempo', function (msg) {
+    tempo = msg;
+    Tone.Transport.bpm.value = tempo;
+});
+
+socket.on('transport', function (msg) {
+    if (msg == 1) {
+        setTimeout(Tone.Transport.start(), delayForSync);
+    }
+    if (msg == 0) {
+        Tone.Transport.stop();
+    }
+});
+
 socket.on('maxLatency', function (msg) {
     maxLatency = msg;
-    if (msg < latency) {
+    if (maxLatency > latency) {
         delayForSync = maxLatency - latency;
     }
 });
 
 socket.on('sync', function (msg) {
-    syncDisplay = msg;
+    setTimeout(function () {
+        delaySync(msg);
+
+    }, delayForSync);
+
 });
+
+function delaySync(_msg) {
+    syncDisplay = _msg;
+}
+
 
 socket.on('mode', function (msg) {
     mode = msg;
@@ -63,6 +88,8 @@ function setup() {
 }
 
 function draw() {
+    //console.log(Tone.Time().toBarsBeatsSixteenths());
+    beat = Tone.TransportTime().toBarsBeatsSixteenths().split(':')[1];
     background(0);
     displayLatency();
     if (initialized) {
@@ -83,15 +110,13 @@ function draw() {
     }
 }
 
+
 function displayLatency() {
     fill(255);
     noStroke();
     textSize(10);
-    setTimeout(latencyText, delayForSync); // won't work in draw (every frame)
-}
-
-function latencyText() {
     text('latency' + ' ' + str(latency), width / 2, height - 10);
+
 }
 
 function windowResized() {

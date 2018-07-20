@@ -38,6 +38,30 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-50",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 547.0, 731.0, 97.0, 22.0 ],
+					"style" : "",
+					"text" : "s transport-state"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-22",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 622.0, 700.0, 53.0, 22.0 ],
+					"style" : "",
+					"text" : "s tempo"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-19",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -664,7 +688,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 982.5, 822.0, 377.0, 22.0 ],
 					"style" : "",
-					"text" : "1 0 0 1 1 1 0 1 1 0 1 0 0 0 0 0 1 1 0 0 0 1 1 0"
+					"text" : "1 1 0 0 0 0 1 0 0 0 1 1 1 1 0 0 0 1 0 0 1 1 1 0"
 				}
 
 			}
@@ -1047,7 +1071,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 428.5, 828.5, 45.0, 22.0 ],
+					"patching_rect" : [ 428.5, 835.5, 45.0, 22.0 ],
 					"style" : "",
 					"text" : "s sync"
 				}
@@ -1370,6 +1394,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-14", 0 ],
+					"order" : 1,
+					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-50", 0 ],
+					"order" : 0,
 					"source" : [ "obj-15", 0 ]
 				}
 
@@ -1523,7 +1556,16 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-22", 0 ],
+					"order" : 0,
+					"source" : [ "obj-33", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-31", 0 ],
+					"order" : 1,
 					"source" : [ "obj-33", 0 ]
 				}
 
@@ -1759,10 +1801,10 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-6::obj-26" : [ "live.text[1]", "live.text", 0 ],
 			"obj-6::obj-27" : [ "live.text[2]", "live.text", 0 ],
-			"obj-6::obj-13" : [ "live.text", "live.text", 0 ],
-			"obj-6::obj-28" : [ "live.text[3]", "live.text", 0 ]
+			"obj-6::obj-26" : [ "live.text[1]", "live.text", 0 ],
+			"obj-6::obj-28" : [ "live.text[3]", "live.text", 0 ],
+			"obj-6::obj-13" : [ "live.text", "live.text", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{

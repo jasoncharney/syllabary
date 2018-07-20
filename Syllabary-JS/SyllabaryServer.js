@@ -21,6 +21,9 @@ var latencyMax;
 var grid0;
 var grid1;
 var grid2;
+var tempo;
+var transportState;
+var mode;
 
 //listens to OSC from Max, sends over websockets to client.
 var oscServer = new osc.Server(connectSettings.maxSendPort, connectSettings.hostIP);
@@ -33,7 +36,18 @@ oscServer.on('sync', function (msg, rinfo) {
     client.emit('sync', msg[1]);
 });
 oscServer.on('mode', function (msg, rinfo) {
-    client.emit('mode', msg[1]);
+    mode = msg[1];
+    client.emit('mode', mode);
+});
+
+oscServer.on('tempo', function (msg, rinfo) {
+    tempo = msg[1];
+    client.emit('tempo', tempo);
+});
+
+oscServer.on('transport', function (msg, rinfo) {
+    transportState = msg[1];
+    client.emit('transport', msg[1]);
 });
 
 oscServer.on('grid8', function (msg, rinfo) {
@@ -52,7 +66,8 @@ function onConnect(socket) {
     //add them to array of users and send to Max.
     //When user disconnects, remove them from the array.
     var socketID = socket.id;
-
+    client.to(socketID).emit('tempo', tempo);
+    client.to(socketID).emit('transport', transportState);
     socket.on('pi', function () {
         socket.emit('po');
     });
@@ -88,7 +103,7 @@ function onConnect(socket) {
 }
 
 function calculateLatencies(msg) {
-    var addLatency = msg;
+    //var addLatency = msg;
     if (latencies.length <= 5) {
         latencies.push(msg);
     }
