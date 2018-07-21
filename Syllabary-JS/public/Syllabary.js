@@ -13,13 +13,19 @@ var delayForSync; //the amount to delay to compensate for latency
 var maxLatency;
 var tempo;
 var beat;
+var beatProgress;
 
 socket = io('/client');
 
-setInterval(function () {
+// setInterval(function () {
+//     startTime = Date.now();
+//     socket.emit('pi');
+// }, 2000);
+
+socket.on('getLatency', function () {
     startTime = Date.now();
     socket.emit('pi');
-}, 2000);
+});
 
 socket.on('po', function () {
     latency = Date.now() - startTime;
@@ -31,6 +37,13 @@ socket.on('tempo', function (msg) {
     Tone.Transport.bpm.value = tempo;
 });
 
+socket.on('maxLatency', function (msg) {
+    maxLatency = msg;
+    if (maxLatency > latency) {
+        delayForSync = maxLatency;
+    }
+});
+
 socket.on('transport', function (msg) {
     if (msg == 1) {
         setTimeout(Tone.Transport.start(), delayForSync);
@@ -40,25 +53,13 @@ socket.on('transport', function (msg) {
     }
 });
 
-socket.on('maxLatency', function (msg) {
-    maxLatency = msg;
-    if (maxLatency > latency) {
-        delayForSync = maxLatency - latency;
-    }
-});
+// socket.on('sync', function (msg) {
+//     setTimeout(function () {
+//         delaySync(msg);
 
-socket.on('sync', function (msg) {
-    setTimeout(function () {
-        delaySync(msg);
+//     }, delayForSync);
 
-    }, delayForSync);
-
-});
-
-function delaySync(_msg) {
-    syncDisplay = _msg;
-}
-
+// });
 
 socket.on('mode', function (msg) {
     mode = msg;
@@ -80,6 +81,7 @@ socket.on('grid8', function (msg) {
 function preload() {
     articFont = loadFont('fonts/OpusSpecialExtraStd.otf');
     percussionFont = loadFont('fonts/OpusPercussionStd.otf');
+    normalFont = loadFont('fonts/Helvetica.otf');
 }
 
 function setup() {
@@ -90,10 +92,12 @@ function setup() {
 function draw() {
     //console.log(Tone.Time().toBarsBeatsSixteenths());
     beat = Tone.TransportTime().toBarsBeatsSixteenths().split(':')[1];
+    beatProgress = (Tone.TransportTime().toTicks() % 192) / 192;
     background(0);
     displayLatency();
+    //prepAndDown();
     if (initialized) {
-        if (mode === 'syncTest') {
+        if (mode === 'eightGrid') {
             syncDraw();
             grid8Draw();
             gridDraw();
@@ -115,10 +119,26 @@ function displayLatency() {
     fill(255);
     noStroke();
     textSize(10);
+    textFont(normalFont);
     text('latency' + ' ' + str(latency), width / 2, height - 10);
 
 }
 
 function windowResized() {
     resizeCanvas(window.innerWidth, window.innerHeight);
+}
+
+function mousePressed() {
+    if (Tone.context.state !== 'running') {
+        Tone.context.resume();
+    }
+
+    //     if (initialized == false) {
+    //         initialized = true;
+    //     }
+}
+
+function prepAndDown() {
+    fill(255);
+    rect(0, beatProgress * height, width, 0.1 * height);
 }

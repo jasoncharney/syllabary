@@ -2,7 +2,7 @@ function syncDraw() {
     noStroke();
     fill(255);
     rectMode(CORNER);
-    rect((beat - 1) * (width / 4), 0, width / 4, height * 0.33);
+    rect(beat * (width / 4), 0, width / 4, height * 0.33);
 }
 
 function gridDraw() {

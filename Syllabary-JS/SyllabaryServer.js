@@ -32,9 +32,9 @@ var oscClient = new osc.Client(connectSettings.hostIP, connectSettings.maxListen
 //send messages to display server status and initialize values (/updateClients OSC listener)
 oscClient.send('/serverStatus', 1);
 
-oscServer.on('sync', function (msg, rinfo) {
-    client.emit('sync', msg[1]);
-});
+// oscServer.on('sync', function (msg, rinfo) {
+//     client.emit('sync', msg[1]);
+// });
 oscServer.on('mode', function (msg, rinfo) {
     mode = msg[1];
     client.emit('mode', mode);
@@ -47,7 +47,11 @@ oscServer.on('tempo', function (msg, rinfo) {
 
 oscServer.on('transport', function (msg, rinfo) {
     transportState = msg[1];
-    client.emit('transport', msg[1]);
+    client.emit('transport', transportState);
+});
+
+oscServer.on('getLatency', function (msg, rinfo) {
+    client.emit('getLatency');
 });
 
 oscServer.on('grid8', function (msg, rinfo) {
@@ -67,14 +71,18 @@ function onConnect(socket) {
     //When user disconnects, remove them from the array.
     var socketID = socket.id;
     client.to(socketID).emit('tempo', tempo);
-    client.to(socketID).emit('transport', transportState);
+    //client.to(socketID).emit('transport', transportState);
     socket.on('pi', function () {
         socket.emit('po');
     });
 
     socket.on('latency', function (msg) {
         calculateLatencies(msg)
-        socket.emit('maxLatency', latencyMax);
+        //TODO: fix it so that max latencies are emitted only after 3 have
+        //been received
+        setTimeout(function () {
+            socket.emit('maxLatency', latencyMax)
+        }, 200);
     });
 
     //connectedUsers.push(socketID);
@@ -104,11 +112,11 @@ function onConnect(socket) {
 
 function calculateLatencies(msg) {
     //var addLatency = msg;
-    if (latencies.length <= 5) {
+    if (latencies.length <= 3) {
         latencies.push(msg);
     }
     latencyMax = Math.max.apply(Math, latencies);
-    if (latencies.length >= 5) {
+    if (latencies.length >= 3) {
         latencies.shift();
     }
 }
