@@ -1,9 +1,10 @@
-var initialized = false;
+2var initialized = false;
 var myInst;
 var socket;
 var syncDisplay;
 var mode;
-
+//var grid8;
+//var grid8Accents = new Array;
 
 //Fonts
 var articFont;
@@ -17,7 +18,16 @@ var maxLatency;
 
 //Musical info from Max
 var tempo;
-
+var beat;
+var beatProgress;
+var rhythm = 'r';
+var pitches = '&©eafafafaaffffa';
+var metroPos = 0.5;
+var metroInc = 0.01;
+var oscTest = new Tone.LFO(0.1, -1, 1).start();
+var conduct = new Tone.Signal();
+oscTest.chain(conduct);
+var conductValue = conduct.value;
 
 
 //Tone.Master.mute = true;
@@ -25,7 +35,17 @@ var tempo;
 
 var ease = new p5.Ease();
 
+Tone.Transport.loop = false;
+Tone.Transport.loopStart = 0;
+Tone.Transport.loopEnd = '4n';
+
 socket = io('/client');
+
+var metroLoop = new Tone.Loop(sweeper, '4n').start(0);
+// setInterval(function () {
+//     startTime = Date.now();
+//     socket.emit('pi');
+// }, 2000);
 
 socket.on('getLatency', function () {
     startTime = Date.now();

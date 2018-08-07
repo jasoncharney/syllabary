@@ -15,7 +15,7 @@ var io = socket(server);
 var client = io.of('/client');
 
 //user arrays/modes
-var connectedUsers = new Array();
+var players = new Array();
 var latencies = new Array();
 var latencyMax;
 var grid0;
@@ -40,6 +40,25 @@ oscServer.on('mode', function (msg, rinfo) {
     client.emit('mode', mode);
 });
 
+oscServer.on('/playerSetups', function (msg, rinfo) {
+    var slice = msg;
+    slice.splice(0, 1);
+    var global = JSON.parse(slice);
+    client.to(players[0]).emit('globalSetup', global.player0setup);
+    client.to(players[1]).emit('globalSetup', global.player1setup);
+    client.to(players[2]).emit('globalSetup', global.player2setup);
+});
+
+oscServer.on('/instimp', function (msg, rinfo) {
+    var slice = msg;
+    slice.splice(0, 1);
+    var instimp = JSON.parse(slice);
+    client.to(players[0]).emit('instimp', instimp.player0);
+    client.to(players[1]).emit('instimp', instimp.player1);
+    client.to(players[2]).emit('instimp', instimp.player2);
+
+});
+
 oscServer.on('tempo', function (msg, rinfo) {
     tempo = msg[1];
     client.emit('tempo', tempo);
@@ -54,14 +73,27 @@ oscServer.on('getLatency', function (msg, rinfo) {
     client.emit('getLatency');
 });
 
+oscServer.on('prepAndHit', function (msg, rinfo) {
+    client.emit('prepAndHit');
+});
+
+oscServer.on('rhythmDisplay', function (msg, rinfo) {
+    client.emit('rhythmDisplay', msg[1]);
+});
+
+
 oscServer.on('grid8', function (msg, rinfo) {
     msg.shift();
     grid0 = msg;
     grid1 = msg.splice(0, 8);
     grid2 = msg.splice(0, 8);
-    client.to(connectedUsers[0]).emit('grid8', grid0);
-    client.to(connectedUsers[1]).emit('grid8', grid1);
-    client.to(connectedUsers[2]).emit('grid8', grid2);
+    client.to(players[0]).emit('grid8', grid0);
+    client.to(players[1]).emit('grid8', grid1);
+    client.to(players[2]).emit('grid8', grid2);
+});
+
+oscServer.on('envelope1', function(msg, rinfo){
+
 });
 
 client.on('connection', onConnect);
@@ -85,28 +117,24 @@ function onConnect(socket) {
         }, 200);
     });
 
-    //connectedUsers.push(socketID);
-    client.to(connectedUsers[0]).emit('grid8', grid0);
-    client.to(connectedUsers[1]).emit('grid8', grid1);
-    client.to(connectedUsers[2]).emit('grid8', grid2);
-    //client sends message in order to receive initializing information
-    socket.on('instrument', function (msg) {
+    // //client sends message in order to receive initializing information
+    socket.on('player', function (msg) {
         if (msg == 0) {
-            connectedUsers[0] = socket.id;
-            oscClient.send('/instrumentConnections', [0, 1]);
+            players[0] = socket.id;
+            oscClient.send('/playerConnections', [0, 1]);
         }
         if (msg == 1) {
-            connectedUsers[1] = socket.id;
-            oscClient.send('/instrumentConnections', [1, 1]);
+            players[1] = socket.id;
+            oscClient.send('/playerConnections', [1, 1]);
         }
         if (msg == 2) {
-            connectedUsers[2] = socket.id;
-            oscClient.send('/instrumentConnections', [2, 1]);
+            players[2] = socket.id;
+            oscClient.send('/playerConnections', [2, 1]);
         }
     });
 
     socket.on('disconnect', function () {
-        oscClient.send('/instrumentConnections', [connectedUsers.indexOf(socket.id), 0]);
+        oscClient.send('/instrumentConnections', [players.indexOf(socket.id), 0]);
     });
 }
 

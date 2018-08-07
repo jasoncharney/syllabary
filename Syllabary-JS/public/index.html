@@ -9,25 +9,23 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <title>Syllabary</title>
-  <canvas id="staff"></canvas>
   <script src="libraries/p5.js"></script>
   <script src="libraries/p5.dom.min.js"></script>
-  <script src="libraries/p5.sound.min.js"></script>
   <script src="libraries/socket.io.js"></script>
   <script src="libraries/p5.func.js"></script>
   <script src="libraries/Tone.js"></script>
   <script src="libraries/StartAudioContext.js"></script>
-  <script src="Syllabary.js"></script>
+  <script src="Syllabary85.js"></script>
   <script src="Initialization.js"></script>
   <script src="EightGrid.js"></script>
   <script src="PassAround.js"></script>
-
   <style type="text/css">
     body {
       margin: 0;
       padding: 0;
       background-color: black;
     }
+
 
     canvas {
       display: block;
@@ -55,9 +53,18 @@
     #exit {
       display: none;
     }
+
+    button {
+      font-size: 100px;
+      text-align: center;
+      padding: 15px 100px;
+    }
+
+    @font-face {
+      font-family: 'pitchFont';
+      src: url('/fonts/Pitches.ttf') format('truetype');
+    }
   </style>
 </head>
-
-
 
 </html>

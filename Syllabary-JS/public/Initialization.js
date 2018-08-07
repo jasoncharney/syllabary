@@ -1,41 +1,45 @@
-var tptButton, pnoButton, percButton;
+var player2Button, player1Button, player0Button;
 
 function initButtons() {
-    pnoButton = createButton('Keith');
-    tptButton = createButton('Sam');
-    percButton = createButton('Adam');
-    pnoButton.position(0, 0).style('font-size', '72px');
-    tptButton.position(0, height / 3).style('font-size', '72px');
-    percButton.position(0, height * (2 / 3)).style('font-size', '72px');
+    player0Button = createButton('Player 0');
+    player1Button = createButton('Player 1');
+    player2Button = createButton('Player 2');
 
-    pnoButton.mousePressed(pnoButtonPushed);
-    percButton.mousePressed(percButtonPushed);
-    tptButton.mousePressed(tptButtonPushed);
+    player0Button.position(0, 0);
+    player1Button.position(0, height / 3);
+    player2Button.position(0, height * (2 / 3));
+
+    player0Button.mousePressed(player0ButtonPushed);
+    player1Button.mousePressed(player1ButtonPushed);
+    player2Button.mousePressed(player2ButtonPushed);
 }
 
-function tptButtonPushed() {
-    myInst = 0;
-    socket.emit('instrument', myInst);
+function player0ButtonPushed() {
+    myPart = 0;
+    socket.emit('player', myPart);
     initialized = true;
-    pnoButton.remove();
-    tptButton.remove();
-    percButton.remove();
+    player1Button.remove();
+    player2Button.remove();
+    player0Button.remove();
+
 }
 
-function pnoButtonPushed() {
-    myInst = 1;
-    socket.emit('instrument', myInst);
+function player1ButtonPushed() {
+    myPart = 1;
+    socket.emit('player', myPart);
     initialized = true;
-    pnoButton.remove();
-    tptButton.remove();
-    percButton.remove();
+    player1Button.remove();
+    player2Button.remove();
+    player0Button.remove();
+
 }
 
-function percButtonPushed() {
-    myInst = 2;
-    socket.emit('instrument', myInst);
+function player2ButtonPushed() {
+    myPart = 2;
+    socket.emit('player', myPart);
     initialized = true;
-    pnoButton.remove();
-    tptButton.remove();
-    percButton.remove();
+    player1Button.remove();
+    player2Button.remove();
+    player0Button.remove();
+
 }
