@@ -2,7 +2,7 @@
 	"name" : "Syllabary-Max",
 	"version" : 1,
 	"creationdate" : 3614158947,
-	"modificationdate" : 3614183241,
+	"modificationdate" : 3616670705,
 	"viewrect" : [ 51.0, 69.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -17,6 +17,16 @@
 			}
 ,
 			"udp-connector.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"sweeper.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"percussion.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}

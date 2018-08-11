@@ -18,7 +18,10 @@ var client = io.of('/client');
 var players = new Array();
 var latencies = new Array();
 
-var percussion;
+var dividers;
+var instimp;
+var envelopes;
+var timelines;
 
 var latencyMax;
 var tempo;
@@ -31,30 +34,39 @@ var oscClient = new osc.Client(connectSettings.hostIP, connectSettings.maxListen
 //send messages to display server status and initialize values (/updateClients OSC listener)
 oscClient.send('/serverStatus', 1);
 
-oscServer.on('/percussion', function (msg) {
+oscServer.on('/dividers', function (msg, rinfo) {
     var slice = msg;
     slice.splice(0, 1);
-    percussion = JSON.parse(slice);
-    client.to(players[2]).emit('percSettings', percussion);
+    dividers = JSON.parse(slice);
+    client.to(players[0]).emit('dividers', dividers.player0);
+    client.to(players[1]).emit('dividers', dividers.player1);
+    client.to(players[2]).emit('dividers', dividers.player2);
 });
 
-oscServer.on('/piano', function (msg) {
+oscServer.on('/instimp', function (msg, rinfo) {
     var slice = msg;
     slice.splice(0, 1);
-    piano = JSON.parse(slice);
-    client.to(players[1]).emit('pianoSettings', piano);
+    instimp = JSON.parse(slice);
+    client.to(players[0]).emit('instimp', instimp.player0);
+    client.to(players[1]).emit('instimp', instimp.player1);
+    client.to(players[2]).emit('instimp', instimp.player2);
 });
 
-oscServer.on('/percSweep', function (msg) {
-    var percSweep = msg;
-    percSweep.splice(0, 1);
-    client.to(players[2]).emit('sweep', percSweep);
-})
-oscServer.on('/pianoSweep', function (msg) {
-    var pianoSweep = msg;
-    pianoSweep.splice(0, 1);
-    client.to(players[1]).emit('sweep', pianoSweep);
-})
+oscServer.on('/envelopes', function (msg, rinfo) {
+    var slice = msg;
+    slice.splice(0, 1);
+    envelopes = JSON.parse(slice);
+    client.to(players[0]).emit('envelopes', envelopes.player0);
+    client.to(players[1]).emit('envelopes', envelopes.player1);
+    client.to(players[2]).emit('envelopes', envelopes.player2);
+});
+
+oscServer.on('/timelines', function (msg, rinfo) {
+    var slice = msg;
+    slice.splice(0, 1);
+    timelines = JSON.parse(slice);
+    client.to(players[0]).emit('timeline', timelines.player0);
+});
 
 oscServer.on('tempo', function (msg, rinfo) {
     tempo = msg[1];
@@ -68,6 +80,10 @@ oscServer.on('transport', function (msg, rinfo) {
 
 oscServer.on('getLatency', function (msg, rinfo) {
     client.emit('getLatency');
+});
+
+oscServer.on('prepAndHit', function (msg, rinfo) {
+    client.emit('prepAndHit');
 });
 
 oscServer.on('rhythmDisplay', function (msg, rinfo) {
@@ -97,17 +113,17 @@ function onConnect(socket) {
 
     // //client sends message in order to receive initializing information
     socket.on('player', function (msg) {
-        if (msg == 'trumpet') {
+        if (msg == 0) {
             players[0] = socket.id;
-            oscClient.send('/playerConnections', 'trumpet');
+            oscClient.send('/playerConnections', [0, 1]);
         }
-        if (msg == 'piano') {
+        if (msg == 1) {
             players[1] = socket.id;
-            oscClient.send('/playerConnections', 'piano');
+            oscClient.send('/playerConnections', [1, 1]);
         }
-        if (msg == 'percussion') {
+        if (msg == 2) {
             players[2] = socket.id;
-            oscClient.send('/playerConnections', 'percussion');
+            oscClient.send('/playerConnections', [2, 1]);
         }
     });
 
