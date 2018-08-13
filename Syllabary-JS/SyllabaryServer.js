@@ -31,6 +31,13 @@ var oscClient = new osc.Client(connectSettings.hostIP, connectSettings.maxListen
 //send messages to display server status and initialize values (/updateClients OSC listener)
 oscClient.send('/serverStatus', 1);
 
+oscServer.on('/trumpet', function (msg, rinfo) {
+    var slice = msg;
+    slice.splice(0, 1);
+    trumpet = JSON.parse(slice);
+    client.to(players[0]).emit('tptSettings', trumpet);
+});
+
 oscServer.on('/percussion', function (msg) {
     var slice = msg;
     slice.splice(0, 1);
@@ -45,16 +52,29 @@ oscServer.on('/piano', function (msg) {
     client.to(players[1]).emit('pianoSettings', piano);
 });
 
+oscServer.on('/pianoEnvs', function (msg) {
+    var slice = msg;
+    slice.splice(0, 1);
+    pianoEnvs = JSON.parse(slice);
+    client.to(players[1]).emit('pianoEnvs', pianoEnvs);
+});
+
 oscServer.on('/percSweep', function (msg) {
     var percSweep = msg;
     percSweep.splice(0, 1);
     client.to(players[2]).emit('sweep', percSweep);
-})
+});
+
 oscServer.on('/pianoSweep', function (msg) {
     var pianoSweep = msg;
     pianoSweep.splice(0, 1);
     client.to(players[1]).emit('sweep', pianoSweep);
-})
+});
+
+oscServer.on('/pianoLDynamic', function (msg) {
+    var pianoSweep = msg[1];
+    client.to(players[1]).emit('LHDynamic', pianoSweep);
+});
 
 oscServer.on('tempo', function (msg, rinfo) {
     tempo = msg[1];

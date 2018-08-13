@@ -9,6 +9,10 @@ var bell, block, scraper, bowl, cymbal, tri, chimes;
 
 var keyboard, rolldown, rollup, shuf, pnt, chord;
 
+var sfort;
+
+var box0, box1, box2, box3;
+
 //create empty variables specific to each instruments
 var myImplements;
 var myInstruments;
@@ -19,6 +23,7 @@ var myNotes;
 var envelope1, envelope2;
 var dispRegisters;
 var myValves;
+var myAirSpeed;
 
 //colors
 var strokeColor = 0;
@@ -37,6 +42,7 @@ var twelfthWidth;
 
 //Fonts
 var instructionFont;
+var pitchFont;
 var notationFont;
 
 //Latency correction
@@ -87,27 +93,9 @@ socket.on('timeline', function (msg) {
     sweepPos = msg;
 });
 
-
-
-socket.on('transport', function (msg) {
-    if (msg == 1) {
-        setTimeout(startTimeline, delayForSync);
-    }
-    if (msg == 0) {
-        Tone.Transport.stop();
-    }
-});
-
-function startTimeline() {
-    Tone.Transport.start();
-    metroPos = 0.5;
-}
-
-
 //LOOK: Preload + setup
 function preload() {
-    loadGlyphs();
-    instructionFont = loadFont('fonts/Helvetica.otf');
+    loadGlyphsAndFonts();
 }
 
 function setup() {
@@ -122,24 +110,44 @@ function setup() {
 //LOOK: Draw Function
 
 function draw() {
-    background(backgroundColor);
+    background(0);
     stroke(strokeColor);
     if (initialized) {
+
+        // stroke(255);
+        // strokeWeight(2);
+        // rectMode(CORNER);
         //drawEnvelope('speed/density', envelope1, envColor1);
         //drawEnvelope('volume', envelope2, envColor2);
         drawDividers(myPart);
         if (myPart == 'trumpet') {
             background(0);
+            drawAir();
             drawValves();
+            drawArticulation();
         }
         if (myPart == 'percussion') {
             drawPercInstruments();
         }
 
         if (myPart == 'piano') {
-            drawPianoRegister();
-            drawPianoArpAndRatios();
-            drawPianoNotation();
+            var piano0 = new Notation(width * box0.register, height * 0.2, 100, height / 6, box0.notes);
+            var piano1 = new Notation(width * box1.register, height * 0.4, 100, height / 6, box1.notes);
+            var piano2 = new Notation(width * box2.register, height * 0.6, 100, height / 6, box2.notes);
+            var piano3 = new Notation(width * box3.register, height * 0.8, 100, height / 6, box3.notes);
+            piano3.notebox(0);
+            piano2.notebox(0);
+            piano1.notebox(0);
+            piano0.notebox(random()); // 'tie');
+            piano0.rhythm('8n');
+            piano0.followAction(box0.follow);
+            piano1.followAction(box1.follow);
+
+            //piano2.notebox(sin(frameCount / 3) * 255) // 'repeat');
+            //piano2.staff('g');
+            //drawPianoRegister();
+            //drawPianoArpAndRatios();
+            //drawPianoNotation();
         }
     }
     sweeper();
@@ -169,120 +177,6 @@ function drawDividers(part) {
     if (rhythmDivider === 'split') {
         line(width / 2, sixthHeight, width / 2, sixthHeight + (5 * twelfthHeight));
     }
-}
-
-function drawValves() {
-    rectMode(CENTER);
-    stroke(255);
-    noFill();
-    strokeWeight(4);
-    rect(width / 2, height / 2, height * 0.2, height * (2 / 3));
-    noStroke();
-    fill(255);
-
-    if (myValves[0] == 1) {
-        ellipse(width / 2, height / 3, height * 0.1, height * 0.1);
-    }
-
-    if (myValves[1] == 1) {
-        ellipse(width / 2, height / 2, height * 0.1, height * 0.1);
-    }
-
-    if (myValves[2] == 1) {
-        ellipse(width / 2, height * (2 / 3), height * 0.1, height * 0.1);
-    }
-}
-
-function drawPercInstruments() {
-    //draw instructions for both hands
-
-    rectMode(CORNER);
-    noStroke();
-    textFont(instructionFont, height * 0.025);
-    textAlign(CENTER, CENTER);
-
-    //draw LH
-
-    text(myInstructions[0], 0, 0, sixthWidth, sixthHeight);
-    image(eval(myImplements[0]), sixthWidth, 0, sixthHeight, sixthHeight);
-    image(eval(myInstruments[0]), sixthWidth * 2, 0, sixthHeight, sixthHeight);
-
-    //draw RH inst/imp
-    text(myInstructions[1], width / 2, 0, sixthWidth, sixthHeight);
-    image(eval(myImplements[1]), sixthWidth * 4, 0, sixthHeight, sixthHeight);
-    image(eval(myInstruments[1]), sixthWidth * 5, 0, sixthHeight, sixthHeight);
-}
-
-function drawPianoRegister() {
-    //draw outline of keyboard
-    imageMode(CORNER);
-    image(eval(keyboard), 0, 0);
-
-    //draw octave highlights
-    rectMode(CORNERS);
-    var startCountingL = myRegisters[0];
-    var stopCountingL = myRegisters[1];
-    var startCountingR = myRegisters[2];
-    var stopCountingR = myRegisters[3];
-
-    //The corner points of each box are drawn.
-    stroke(pianoLHandColor[0], pianoLHandColor[1], pianoLHandColor[2], 200);
-    strokeWeight(4);
-    fill(pianoLHandColor[0], pianoLHandColor[1], pianoLHandColor[2], 100);
-    rect(dispRegisters[startCountingL], 0, dispRegisters[stopCountingL], twelfthHeight);
-
-    stroke(pianoRHandColor[0], pianoRHandColor[1], pianoRHandColor[2], 255);
-    strokeWeight(4);
-    fill(pianoRHandColor[0], pianoRHandColor[1], pianoRHandColor[2], 100);
-    rect(dispRegisters[startCountingR], 0, dispRegisters[stopCountingR], twelfthHeight);
-
-    //TODO: move these labels to be under the boxes, or put a little tick to confirm where edges are
-    //LH/RH labels
-    // noStroke();
-    // textFont(instructionFont, height * 0.05);
-    // textAlign(CENTER, BOTTOM);
-    // fill(pianoLHandColor[0], pianoLHandColor[1], pianoLHandColor[2], 255);
-    // text('LH', 0, twelfthHeight, sixthHeight, sixthHeight);
-
-    // fill(pianoRHandColor[0], pianoRHandColor[1], pianoRHandColor[2], 255);
-    // text('RH', width - sixthWidth, twelfthHeight, sixthHeight, sixthHeight);
-
-}
-
-
-function drawPianoArpAndRatios() {
-    //draw piano arp symbols
-    imageMode(CENTER);
-    //image(eval(myArp[0]), width / 3, sixthHeight, sixthHeight, sixthHeight);
-    //image(eval(myArp[1]), (width / 2 + sixthWidth), sixthHeight, sixthHeight, sixthHeight);
-    //draw ratios of notes
-    textFont(instructionFont, height * 0.15);
-    noStroke();
-    fill(strokeColor);
-    rectMode(CENTER);
-    textAlign(CENTER, BOTTOM);
-    text(myRatios[0] + ':' + myRatios[1], width * 0.5, sixthHeight + twelfthHeight);
-}
-
-function drawPianoNotation() {
-    //draw backgrounds for notation
-    noStroke();
-    rectMode(CORNERS);
-
-    fill(pianoRHandColor[0], pianoRHandColor[1], pianoRHandColor[2], 100);
-    rect(width / 2, sixthHeight + twelfthHeight, width, height - (5 * twelfthHeight));
-    fill(pianoLHandColor[0], pianoLHandColor[1], pianoLHandColor[2], LHDynamic);
-    rect(0, sixthHeight + twelfthHeight, width / 2, height - (5 * twelfthHeight));
-
-    //draw notation within text boxes
-    rectMode(CENTER);
-    textFont(notationFont, height * 0.1);
-
-    fill(strokeColor);
-    textAlign(CENTER, CENTER);
-    var notation = "&" + myNotes[0] + "+" + myNotes[1];
-    text(notation, width / 2, height / 2 - (textDescent()), textWidth(notation), height * 0.33);
-
 }
 
 function calculateEnvelope(env1, env2) {
@@ -348,20 +242,7 @@ function sweeper() {
 }
 
 //LOOK: Functions that only need to happen once:
-function calculatePianoRegisters() {
-    //divide register markings among octaves
-    var keyWidth = width / 52;
-    dispRegisters[0] = 0;
-    dispRegisters[1] = 9 * keyWidth;
-    dispRegisters[2] = 16 * keyWidth;
-    dispRegisters[3] = 23 * keyWidth;
-    dispRegisters[4] = 30 * keyWidth;
-    dispRegisters[5] = 37 * keyWidth;
-    dispRegisters[6] = 45 * keyWidth;
-    dispRegisters[7] = width;
-    keyboard.resize(width, twelfthHeight);
-    //tintGlyphs();
-}
+
 
 function tintGlyphs() {
     keyboard.loadPixels();
@@ -375,14 +256,13 @@ function tintGlyphs() {
     keyboard.updatePixels();
 }
 
-function drawPercSetup() {
-    
-}
 
-function loadGlyphs() {
+
+function loadGlyphsAndFonts() {
     //load fonts
     instructionFont = loadFont('fonts/Helvetica.otf');
-    notationFont = loadFont('fonts/Pitches.otf');
+    pitchFont = loadFont('fonts/Pitches.otf');
+    notationFont = loadFont('fonts/Bravura.otf');
     //PERC:
     //load implements
     beater = loadImage('glyphs/beater.png');
@@ -408,4 +288,6 @@ function loadGlyphs() {
     rollup = loadImage('glyphs/rollup.png');
     rolldown = loadImage('glyphs/rolldown.png');
     shuff = loadImage('glyphs/shuff.png');
+    //load articulations
+    sfort = loadImage('glyphs/articulations/sfort.png');
 }

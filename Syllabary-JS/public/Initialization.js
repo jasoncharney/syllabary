@@ -16,6 +16,7 @@ function initButtons() {
 
 function player0ButtonPushed() {
     myPart = 'trumpet';
+    myValves = new Array(3);
     socket.emit('player', myPart);
     initialized = true;
     player1Button.remove();
@@ -23,11 +24,11 @@ function player0ButtonPushed() {
     player0Button.remove();
     calculateSquares();
     socket.on('tptSettings', function (msg) {
+        myValves = msg.valves;
+        myAirSpeed = msg.airspeed
+        //calculateEnvelope(msg.envelope);
         intialized = true;
-        calculateEnvelope(msg.envelope);
-        myInstructions = msg.instructions;
-        myImplements = msg.implements;
-        myInstruments = msg.instruments;
+
     });
 
 }
@@ -39,6 +40,10 @@ function player1ButtonPushed() {
     myRegisters = new Array(4);
     myRatios = new Array(2);
     dispRegisters = new Array(8);
+    piano0 = new Notation(height * 0.2, height / 6);
+    piano1 = new Notation(height * 0.4, height / 6);
+    piano2 = new Notation(height * 0.6, height / 6);
+    piano3 = new Notation(height * 0.8, height / 6);
 
     socket.emit('player', myPart);
 
@@ -47,20 +52,30 @@ function player1ButtonPushed() {
     player0Button.remove();
     calculateSquares();
     socket.on('pianoSettings', function (msg) {
-        calculateEnvelope(msg.envelope1, msg.envelope2);
-        myRegisters = msg.registers;
-        myArp = msg.arp;
-        myRatios = msg.ratio;
-        myNotes = [msg.notesL, msg.notesR];
+        //calculateEnvelope(msg.envelope1, msg.envelope2);
+        // myRegisters = msg.registers;
+        // myArp = msg.arp;
+        // myRatios = msg.ratio;
+        // myNotes = [msg.notesL, msg.notesR];
+        box0 = msg.box0;
+        box1 = msg.box1;
+        box2 = msg.box2;
+        box3 = msg.box3;
+
         if (initialized == false) {
-            calculatePianoRegisters();
+            //calculatePianoRegisters();
             initialized = true;
         }
-        console.log(keyboard.get(0, 0));
     });
-    socket.on('sweep', function (msg) {
-        sweepPos = msg;
+    socket.on('pianoEnvs', function (msg) {
+        pianoEnvs = msg;
     });
+    // socket.on('sweep', function (msg) {
+    //     sweepPos = msg;
+    // });
+    // socket.on('LHDynamic', function (msg) {
+    //     LHDynamic = msg;
+    // });
 
 }
 
