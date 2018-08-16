@@ -1,30 +1,42 @@
-// function PercussionListeners() {
-//     socket.on('percSettings', function (msg) {
-//         console.log(msg);
-//         //function calculateEnvelope(msg.envelope);
-//     });
-// }
-
-function drawPercInstruments() {
-    //draw instructions for both hands
-
-    rectMode(CORNER);
-    noStroke();
-    textFont(instructionFont, height * 0.025);
-    textAlign(CENTER, CENTER);
-
-    //draw LH
-
-    text(myInstructions[0], 0, 0, sixthWidth, sixthHeight);
-    image(eval(myImplements[0]), sixthWidth, 0, sixthHeight, sixthHeight);
-    image(eval(myInstruments[0]), sixthWidth * 2, 0, sixthHeight, sixthHeight);
-
-    //draw RH inst/imp
-    text(myInstructions[1], width / 2, 0, sixthWidth, sixthHeight);
-    image(eval(myImplements[1]), sixthWidth * 4, 0, sixthHeight, sixthHeight);
-    image(eval(myInstruments[1]), sixthWidth * 5, 0, sixthHeight, sixthHeight);
+function drawPercSetup() {
+    imageMode(CENTER);
+    image(blocks, width * 0.1, height * 0.2);
+    image(cymbal, width * 0.3, height * 0.2);
+    image(drum, width * 0.5, height * 0.2);
+    image(bowl, width * 0.7, height * 0.2);
+    image(glock, width * 0.9, height * 0.2);
 }
 
-function drawPercSetup() {
+function drawImplements() {
+    rectMode(CENTER);
+    imageMode(CENTER);
+    noFill();
+    stroke(255);
+    rect(width * 0.4, height * 0.85, height * 0.2, height * 0.2);
+    rect(width * 0.6, height * 0.85, height * 0.2, height * 0.2);
+    image(eval(perc.LH.implement), width * 0.4, height * 0.85);
+    image(eval(perc.RH.implement), width * 0.6, height * 0.85);
+}
 
+function drawTechniques() {
+    rectMode(CENTER);
+    imageMode(CENTER);
+    noFill();
+    stroke(255);
+    rect(width * 0.4, height * 0.6, height * 0.2, height * 0.2);
+    rect(width * 0.6, height * 0.6, height * 0.2, height * 0.2);
+
+    image(eval())
+}
+
+class PercussionNotation {
+    constructor(x, y, info) {
+        this.x = x;
+        this.y = y;
+        this.info = info;
+        this.w;
+        this.h;
+        this.notationSize = this.h * 0.3;
+    }
+    boxUpdate(perc) {}
 }
