@@ -80,6 +80,10 @@ function percussionButtonPushed() {
             initialized = true;
         }
     });
+
+    socket.on('percEnvs', function (msg) {
+        percEnvs = msg;
+    });
 }
 
 function windowResized() {

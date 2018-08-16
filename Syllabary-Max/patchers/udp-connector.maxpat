@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 55.0, 79.0, 1753.0, 913.0 ],
+		"rect" : [ 754.0, -1001.0, 892.0, 967.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -120,32 +120,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-67",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1010.0, 794.0, 144.0, 22.0 ],
-					"style" : "",
-					"text" : "prepend /pianoLDynamic"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-61",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1012.733276, 757.0, 101.0, 22.0 ],
-					"style" : "",
-					"text" : "r pianoLDynamic"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-58",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -203,7 +177,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 658.0, 328.800049, 173.0, 22.0 ],
 					"style" : "",
-					"text" : "/playerConnections piano"
+					"text" : "/serverStatus 1"
 				}
 
 			}
@@ -1761,13 +1735,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-67", 0 ],
-					"source" : [ "obj-61", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-11", 0 ],
 					"source" : [ "obj-62", 0 ]
 				}
@@ -1798,13 +1765,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-65", 0 ],
 					"source" : [ "obj-66", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-11", 0 ],
-					"source" : [ "obj-67", 0 ]
 				}
 
 			}

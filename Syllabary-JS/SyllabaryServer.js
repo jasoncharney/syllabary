@@ -45,6 +45,13 @@ oscServer.on('/percussion', function (msg) {
     client.to(players[2]).emit('percSettings', percussion);
 });
 
+oscServer.on('/percEnvs', function (msg) {
+    var slice = msg;
+    slice.splice(0, 1);
+    percEnvs = JSON.parse(slice);
+    client.to(players[2]).emit('percEnvs', percEnvs);
+});
+
 oscServer.on('/piano', function (msg) {
     var slice = msg;
     slice.splice(0, 1);

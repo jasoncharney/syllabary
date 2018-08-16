@@ -26,7 +26,30 @@ function drawTechniques() {
     rect(width * 0.4, height * 0.6, height * 0.2, height * 0.2);
     rect(width * 0.6, height * 0.6, height * 0.2, height * 0.2);
 
-    image(eval())
+    fill(dynamicColor(percEnvs.LH.dynamic));
+    rect(width * 0.4, height * 0.6, height * 0.2, height * 0.2);
+    image(eval(perc.LH.instruction), width * 0.4, height * 0.6);
+
+    fill(dynamicColor(percEnvs.RH.dynamic));
+    rect(width * 0.6, height * 0.6, height * 0.2, height * 0.2);
+    image(eval(perc.LH.instruction), width * 0.6, height * 0.6);
+}
+
+function drawInstrumentLine() {
+    var leftMin = percPos[perc.LH.instrument][0];
+    var leftMax = percPos[perc.LH.instrument][1];
+    var rightMin = percPos[perc.RH.instrument][0];
+    var rightMax = percPos[perc.RH.instrument][1];
+
+    strokeWeight(7);
+
+    //draw LH line
+    stroke(dynamicColor(percEnvs.LH.dynamic));
+    line(width * 0.4, height * 0.6, map(percEnvs.LH.pos, 0, 1, leftMin * width, leftMax * width), height * 0.2);
+
+    //draw RH line
+    stroke(dynamicColor(percEnvs.RH.dynamic));
+    line(width * 0.6, height * 0.6, map(percEnvs.RH.pos, 0, 1, rightMin * width, rightMax * width), height * 0.2);
 }
 
 class PercussionNotation {

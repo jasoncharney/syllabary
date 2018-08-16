@@ -8,7 +8,7 @@ var beater, chain, hand, mallet, superball, stick, thimble, brush;
 var bounce, hitcenter, hitedge, scrapetocenter, scrapetoedge, smatter, swirlccw, swirlcw;
 var percSetup;
 
-var perc;
+var perc, percEnvs;
 
 var keyboard, chord;
 
@@ -67,7 +67,14 @@ var latency;
 var delayForSync; //the amount to delay to compensate for latency
 var maxLatency;
 
-var LHDynamic;
+//lines to show position on percussion instruments
+var percPos = {
+    'blocks': [0, 0.2],
+    'cymbal': [0.2, 0.4],
+    'drum': [0.4, 0.6],
+    'bowl': [0.6, 0.8],
+    'glock': [0.8, 1]
+}
 
 var ease = new p5.Ease();
 
@@ -117,6 +124,7 @@ function draw() {
         }
         if (myPart == 'percussion') {
             drawPercSetup();
+            drawInstrumentLine();
             drawImplements(myImplements);
             drawTechniques();
         }
