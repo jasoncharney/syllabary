@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 130.0, -972.0, 1516.0, 937.0 ],
+		"rect" : [ -206.0, -1001.0, 943.0, 946.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,47 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-67",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 706.0, 727.0, 50.0, 22.0 ],
+					"style" : "",
+					"text" : "0."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-63",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 714.0, 639.0, 82.0, 22.0 ],
+					"style" : "",
+					"text" : "r trumpet-env"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-61",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 634.0, 495.0, 24.0, 24.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 691.0, 530.0, 24.0, 24.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-51",
 					"maxclass" : "number",
@@ -118,7 +159,7 @@
 					"maxclass" : "dict.view",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1625.0, 973.0, 145.0, 146.0 ],
+					"patching_rect" : [ 1592.0, 973.0, 145.0, 146.0 ],
 					"style" : ""
 				}
 
@@ -165,13 +206,13 @@
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "trumpet.maxpat",
-					"numinlets" : 0,
+					"numinlets" : 2,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 385.5, 510.0, 195.0, 185.0 ],
+					"patching_rect" : [ 467.0, 504.0, 195.0, 185.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 681.75, 394.0, 203.0, 187.0 ],
+					"presentation_rect" : [ 683.75, 563.0, 518.0, 187.0 ],
 					"varname" : "trumpet",
 					"viewvisibility" : 1
 				}
@@ -901,7 +942,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1126.0, 463.0, 50.0, 22.0 ],
 					"style" : "",
-					"text" : "1."
+					"text" : "0."
 				}
 
 			}
@@ -1010,7 +1051,7 @@
 					"outlettype" : [ "dictionary", "" ],
 					"patching_rect" : [ 1233.0, 324.0, 438.0, 77.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 35.25, 688.0, 518.5, 60.0 ],
+					"presentation_rect" : [ 35.25, 688.0, 518.5, 74.0 ],
 					"varname" : "pianonotes[1]",
 					"viewvisibility" : 1
 				}
@@ -1095,7 +1136,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 381.5, 758.0, 24.0, 22.0 ],
+					"patching_rect" : [ 467.0, 717.0, 24.0, 22.0 ],
 					"style" : "",
 					"text" : "t b"
 				}
@@ -1298,7 +1339,7 @@
 					"numoutlets" : 2,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "", "dictionary" ],
-					"patching_rect" : [ 1162.0, 670.0, 324.0, 198.0 ],
+					"patching_rect" : [ 1049.0, 669.0, 324.0, 198.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 362.5, 265.851562, 673.0, 113.0 ],
 					"varname" : "percussion",
@@ -2177,6 +2218,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-11", 0 ],
+					"source" : [ "obj-61", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-67", 1 ],
+					"source" : [ "obj-63", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-39", 0 ],
 					"order" : 1,
 					"source" : [ "obj-66", 0 ]
@@ -2214,10 +2269,10 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-6::obj-13" : [ "live.text", "live.text", 0 ],
-			"obj-6::obj-28" : [ "live.text[3]", "live.text", 0 ],
 			"obj-6::obj-27" : [ "live.text[2]", "live.text", 0 ],
-			"obj-6::obj-26" : [ "live.text[1]", "live.text", 0 ]
+			"obj-6::obj-26" : [ "live.text[1]", "live.text", 0 ],
+			"obj-6::obj-28" : [ "live.text[3]", "live.text", 0 ],
+			"obj-6::obj-13" : [ "live.text", "live.text", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{

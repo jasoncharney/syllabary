@@ -68,28 +68,6 @@ oscServer.on('/trumpetEnv', function (msg) {
 
 });
 
-oscServer.on('/percSweep', function (msg) {
-    var percSweep = msg;
-    percSweep.splice(0, 1);
-    client.to(players[2]).emit('sweep', percSweep);
-});
-
-oscServer.on('/pianoSweep', function (msg) {
-    var pianoSweep = msg;
-    pianoSweep.splice(0, 1);
-    client.to(players[1]).emit('sweep', pianoSweep);
-});
-
-oscServer.on('/pianoLDynamic', function (msg) {
-    var pianoSweep = msg[1];
-    client.to(players[1]).emit('LHDynamic', pianoSweep);
-});
-
-oscServer.on('tempo', function (msg, rinfo) {
-    tempo = msg[1];
-    client.emit('tempo', tempo);
-});
-
 oscServer.on('getLatency', function (msg, rinfo) {
     client.emit('getLatency');
 });
@@ -104,7 +82,6 @@ function onConnect(socket) {
     //add them to array of users and send to Max.
     //When user disconnects, remove them from the array.
     var socketID = socket.id;
-    client.to(socketID).emit('tempo', tempo);
     //client.to(socketID).emit('transport', transportState);
     socket.on('pi', function () {
         socket.emit('po');
