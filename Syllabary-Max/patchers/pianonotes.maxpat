@@ -92,6 +92,7 @@
 						"envelope::env-settings[1]" : 0
 					}
 ,
+					"autorestore" : "piano-regs.json",
 					"id" : "obj-26",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -99,7 +100,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 625.0, 239.0, 135.0, 22.0 ],
 					"saved_object_attributes" : 					{
-						"client_rect" : [ 1230, -592, 1630, -92 ],
+						"client_rect" : [ 1241, 118, 1641, 618 ],
 						"parameter_enable" : 0,
 						"storage_rect" : [ 1135, -861, 1680, -307 ]
 					}
@@ -125,7 +126,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 530.0, 510.0, 279.0, 79.0 ],
+					"patching_rect" : [ 534.0, 508.0, 279.0, 79.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 61.0, 26.0, 279.0, 45.0 ],
 					"varname" : "envelope",

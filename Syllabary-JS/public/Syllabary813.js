@@ -104,7 +104,7 @@ function draw() {
         }
         if (myPart == 'percussion') {
             drawInstrumentLine();
-            drawImplements(myImplements);
+            drawImplements();
             drawTechniques();
             drawPercSetup();
         }
