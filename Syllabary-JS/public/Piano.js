@@ -70,8 +70,6 @@ class PianoNotation {
 
         rect(this.x, this.y, this.w, this.h);
 
-        textFont(pitchFont);
-        textSize(this.notationSize);
         noStroke();
         fill(255);
         textAlign(CENTER, BASELINE);
@@ -93,7 +91,7 @@ class PianoNotation {
             text(' ', followpos, this.y - (this.h * 0.5));
         }
     }
-    
+
     //display rhythm - or not? TODO: deprecate this and replace with percussion rhythm?
     rhythm(_rhythm) {
         var rhythDisplay;

@@ -25,30 +25,10 @@ var tpt; // single object for holding/receiving information about trumpet from s
 var tptL;
 var tptR;
 var tptPlay;
+var tptEnv;
 
 var pitchClass = ['a', 'A', 's', 'S', 'd', 'f', 'F', 'g', 'G', 'h', 'H', 'j'];
-var trumpetPitches = ['b', 'B', 'b', 'N', 'm', 'a', 'A', 's', 'S', 'd', 'f', 'F', 'g', 'G', 'h', 'H', 'j', 'q', 'Q', 'w', 'W', 'e', 'r', 'R', 't', 'T', 'y', 'Y', 'u', '1']
-
-//create empty variables specific to each instruments
-var myImplements;
-var myInstruments;
-var myInstructions;
-var myArp;
-var myRegisters;
-var myNotes;
-var envelope1, envelope2;
-var dispRegisters;
-var myValves;
-var myAirSpeed;
-
-//colors
-var strokeColor = 0;
-var backgroundColor = 255;
-var envColor1 = [120, 50, 255];
-var envColor2 = [120, 255, 120];
-var sweeperColor = [0, 0, 0];
-var pianoLHandColor = [255, 0, 0];
-var pianoRHandColor = [0, 0, 255];
+var trumpetPitches = ['b', 'B', 'b', 'N', 'm', 'a', 'A', 's', 'S', 'd', 'f', 'F', 'g', 'G', 'h', 'H', 'j', 'q', 'Q', 'w', 'W', 'e', 'r', 'R', 't', 'T', 'y', 'Y', 'u', '1'];
 
 //height/width units
 var sixthHeight;
@@ -60,6 +40,7 @@ var twelfthWidth;
 var instructionFont;
 var pitchFont;
 var notationFont;
+var chordFont;
 
 //Latency correction
 var startTime;
@@ -113,78 +94,24 @@ function setup() {
 
 function draw() {
     background(0);
-    stroke(strokeColor);
     if (initialized) {
         if (myPart == 'trumpet') {
             drawAir();
             drawValves();
             drawArticulation();
-            tptL.notebox(tpt.airspeed);
-            tptR.notebox(tpt.airspeed);
+            tptL.notebox(tptEnv);
+            tptR.notebox(tptEnv);
         }
         if (myPart == 'percussion') {
-            drawPercSetup();
             drawInstrumentLine();
             drawImplements(myImplements);
             drawTechniques();
+            drawPercSetup();
         }
-
         if (myPart == 'piano') {
             pianoDrawing();
         }
     }
-}
-
-function calculateEnvelope(env1, env2) {
-    envelope1 = env1;
-    envelope2 = env2;
-    var envelopeHeight = 0.95 * (5 * twelfthHeight);
-    var envelopeWidth = 0.98 * width;
-
-    //calculate envelope points
-    for (var i = 0; i < envelope1.length; i++) {
-        if (i % 2 == 0) {
-            envelope1[i] = envelope1[i] * envelopeWidth;
-        }
-        if (i % 2 !== 0) {
-            envelope1[i] = (1 - envelope1[i]) * envelopeHeight;
-        }
-    }
-    for (var i = 0; i < envelope2.length; i++) {
-        if (i % 2 == 0) {
-            envelope2[i] = envelope2[i] * envelopeWidth;
-        }
-        if (i % 2 !== 0) {
-            envelope2[i] = (1 - envelope2[i]) * envelopeHeight;
-        }
-    }
-}
-
-function drawEnvelope(label, env, envColor) {
-    noStroke();
-    fill(envColor[0], envColor[1], envColor[2], 255);
-    textFont(instructionFont, height * 0.05);
-    textAlign(LEFT);
-    if (env == envelope1) {
-        text(label, width * 0.01, height * 2 / 3);
-    }
-    if (env == envelope2) {
-        text(label, width * 0.01, (height * 2 / 3) - (textAscent() * 3));
-    }
-    stroke(envColor[0], envColor[1], envColor[2], 255);
-    strokeWeight(4);
-    fill(envColor[0], envColor[1], envColor[2], 50);
-    push();;
-    beginShape();
-    translate(0, (height / 2) + twelfthHeight + height * 0.02);
-    curveTightness(0.75);
-    curveVertex(env[0], env[1]);
-    for (var i = 0; i < env.length - 1; i += 2) {
-        curveVertex(env[i], env[i + 1]);
-    }
-    curveVertex(env[env.length - 2], env[env.length - 1]);
-    endShape(CLOSE);
-    pop();
 }
 
 //LOOK: Functions that only need to happen once:
@@ -195,6 +122,7 @@ function loadGlyphsAndFonts() {
     instructionFont = loadFont('fonts/Helvetica.otf');
     pitchFont = loadFont('fonts/Pitches.otf');
     notationFont = loadFont('fonts/Bravura.otf');
+    chordFont = loadFont('fonts/ChordsFont.otf');
     //load implements
     beater = loadImage('glyphs/implements/beater.png');
     chain = loadImage('glyphs/implements/chain.png');

@@ -1,0 +1,18 @@
+{
+	"pattrstorage" : 	{
+		"name" : "percpos",
+		"slots" : 		{
+			"1" : 			{
+				"id" : 1,
+				"data" : 				{
+					"Lpos" : [ 0.5 ],
+					"Rpos" : [ 0.5 ]
+				}
+
+			}
+
+		}
+
+	}
+
+}

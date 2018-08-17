@@ -18,11 +18,7 @@ var client = io.of('/client');
 var players = new Array();
 var latencies = new Array();
 
-var percussion;
-
 var latencyMax;
-var tempo;
-var transportState;
 
 //listens to OSC from Max, sends over websockets to client.
 var oscServer = new osc.Server(connectSettings.maxSendPort, connectSettings.hostIP);
@@ -65,6 +61,12 @@ oscServer.on('/pianoEnvs', function (msg) {
     pianoEnvs = JSON.parse(slice);
     client.to(players[1]).emit('pianoEnvs', pianoEnvs);
 });
+oscServer.on('/trumpetEnv', function (msg) {
+    var slice = msg;
+    slice.splice(0, 1);
+    client.to(players[0]).emit('tptEnv', slice);
+
+});
 
 oscServer.on('/percSweep', function (msg) {
     var percSweep = msg;
@@ -88,11 +90,6 @@ oscServer.on('tempo', function (msg, rinfo) {
     client.emit('tempo', tempo);
 });
 
-oscServer.on('transport', function (msg, rinfo) {
-    transportState = msg[1];
-    client.emit('transport', transportState);
-});
-
 oscServer.on('getLatency', function (msg, rinfo) {
     client.emit('getLatency');
 });
@@ -114,9 +111,7 @@ function onConnect(socket) {
     });
 
     socket.on('latency', function (msg) {
-        calculateLatencies(msg)
-        //TODO: fix it so that max latencies are emitted only after 3 have
-        //been received
+        calculateLatencies(msg);
         setTimeout(function () {
             socket.emit('maxLatency', latencyMax)
         }, 200);

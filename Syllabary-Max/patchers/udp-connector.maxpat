@@ -38,6 +38,58 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-71",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 451.0, 476.400024, 107.0, 22.0 ],
+					"style" : "",
+					"text" : "s initializeTrumpet"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-72",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 451.0, 449.0, 24.0, 22.0 ],
+					"presentation_rect" : [ 265.0, 345.0, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "t b"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-67",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 120.0, 557.0, 92.0, 22.0 ],
+					"style" : "",
+					"text" : "/trumpetEnv $1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-60",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 108.0, 524.0, 82.0, 22.0 ],
+					"style" : "",
+					"text" : "r trumpet-env"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"comment" : "",
 					"id" : "obj-1",
 					"index" : 6,
@@ -46,7 +98,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "dictionary" ],
 					"patching_rect" : [ 1566.400024, 312.400024, 30.0, 30.0 ],
-					"presentation_rect" : [ 1566.400024, 315.400024, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -72,7 +123,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1566.400024, 369.0, 147.0, 22.0 ],
-					"presentation_rect" : [ 1566.400024, 372.0, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "dict.serialize @mode json"
 				}
@@ -177,7 +227,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 658.0, 328.800049, 173.0, 22.0 ],
 					"style" : "",
-					"text" : "/serverStatus 1"
+					"text" : "/playerConnections trumpet"
 				}
 
 			}
@@ -913,7 +963,7 @@
 					"patching_rect" : [ 446.0, 141.0, 101.0, 22.0 ],
 					"presentation_rect" : [ 197.0, 64.0, 101.0, 22.0 ],
 					"style" : "",
-					"text" : "10.1.10.194"
+					"text" : "10.1.10.34"
 				}
 
 			}
@@ -1039,7 +1089,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 18.5, 23.100002, 120.0, 20.0 ],
 					"style" : "",
-					"text" : "hostIP: 10.1.10.194"
+					"text" : "hostIP: 10.1.10.34"
 				}
 
 			}
@@ -1533,6 +1583,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
+					"order" : 1,
+					"source" : [ "obj-28", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-72", 0 ],
+					"order" : 0,
 					"source" : [ "obj-28", 0 ]
 				}
 
@@ -1735,6 +1794,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-67", 0 ],
+					"source" : [ "obj-60", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-11", 0 ],
 					"source" : [ "obj-62", 0 ]
 				}
@@ -1765,6 +1831,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-65", 0 ],
 					"source" : [ "obj-66", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-11", 0 ],
+					"source" : [ "obj-67", 0 ]
 				}
 
 			}
@@ -1802,6 +1875,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-68", 0 ],
 					"source" : [ "obj-70", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-71", 0 ],
+					"source" : [ "obj-72", 0 ]
 				}
 
 			}

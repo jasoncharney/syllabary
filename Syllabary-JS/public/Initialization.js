@@ -25,11 +25,15 @@ function trumpetButtonPushed() {
     socket.on('tptSettings', function (msg) {
         tpt = msg;
         //tptPlay = tpt.play;
-        tptL = new TrumpetNotation(tpt.noteboxL, width * 0.25, height / 2, width * 0.25, width * 0.33);
-        tptR = new TrumpetNotation(tpt.noteboxR, width * 0.75, height / 2, width * 0.25, width * 0.33);
+        tptL = new TrumpetNotation(tpt.noteboxL, width * 0.25, height / 2, width * 0.25, width * 0.33, 'L');
+        tptR = new TrumpetNotation(tpt.noteboxR, width * 0.75, height / 2, width * 0.25, width * 0.33, 'R');
         if (initialized == false) {
             initialized = true;
         }
+    });
+    socket.on('tptEnv', function (msg) {
+        tptEnv = msg[0];
+        console.log(tptEnv);
     });
 
 }

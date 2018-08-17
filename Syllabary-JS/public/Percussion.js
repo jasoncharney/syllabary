@@ -1,5 +1,4 @@
 function drawPercSetup() {
-    imageMode(CENTER);
     image(blocks, width * 0.1, height * 0.2);
     image(cymbal, width * 0.3, height * 0.2);
     image(drum, width * 0.5, height * 0.2);
@@ -19,8 +18,6 @@ function drawImplements() {
 }
 
 function drawTechniques() {
-    rectMode(CENTER);
-    imageMode(CENTER);
     noFill();
     stroke(255);
     rect(width * 0.4, height * 0.6, height * 0.2, height * 0.2);
@@ -32,7 +29,7 @@ function drawTechniques() {
 
     fill(dynamicColor(percEnvs.RH.dynamic));
     rect(width * 0.6, height * 0.6, height * 0.2, height * 0.2);
-    image(eval(perc.LH.instruction), width * 0.6, height * 0.6);
+    image(eval(perc.RH.instruction), width * 0.6, height * 0.6);
 }
 
 function drawInstrumentLine() {
@@ -41,7 +38,7 @@ function drawInstrumentLine() {
     var rightMin = percPos[perc.RH.instrument][0];
     var rightMax = percPos[perc.RH.instrument][1];
 
-    strokeWeight(7);
+    strokeWeight(12);
 
     //draw LH line
     stroke(dynamicColor(percEnvs.LH.dynamic));

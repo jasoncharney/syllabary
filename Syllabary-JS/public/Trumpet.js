@@ -8,6 +8,7 @@ function drawValves() {
 
     //draw valves
     var valveSize = height * 0.1;
+
     fill(tpt.valves[0] * 255);
     ellipse(width / 2, height / 3, valveSize, valveSize);
 
@@ -17,10 +18,11 @@ function drawValves() {
     fill(tpt.valves[2] * 255);
     ellipse(width / 2, height * (2 / 3), valveSize, valveSize);
 
+    //point to the correct side to indicate what to play
     textFont(notationFont);
     textSize(height * 0.3);
     strokeWeight(4);
-    fill(dynamicColor(tpt.airspeed));
+    fill(dynamicColor(tptEnv));
     if (tpt.play == 'R') {
         textAlign(LEFT);
         text('', width / 2 + height * 0.1, height * 0.5);
@@ -42,21 +44,22 @@ function drawArticulation() {
 
 function drawAir() {
     noStroke();
-    fill(dynamicColor(tpt.airspeed));
+    fill(dynamicColor(tptEnv));
     beginShape();
-    vertex((width / 2) - tpt.airspeed * (width * 0.05), height);
-    vertex((width / 2) + tpt.airspeed * (width * 0.05), height);
-    vertex((width / 2) + tpt.airspeed * (width * 0.15), 0);
-    vertex((width / 2) - tpt.airspeed * (width * 0.15), 0);
+    vertex((width / 2) - tptEnv * (width * 0.05), height);
+    vertex((width / 2) + tptEnv * (width * 0.05), height);
+    vertex((width / 2) + tptEnv * (width * 0.15), 0);
+    vertex((width / 2) - tptEnv * (width * 0.15), 0);
     endShape(CLOSE);
 }
 
 class TrumpetNotation {
-    constructor(_tpt, x, y, w, h) {
+    constructor(_tpt, x, y, w, h, p) {
         this.x = x;
         this.y = y;
         this.h = h;
         this.w = w;
+        this.p = p;
         this.notationSize = this.h * 0.3;
         this.technique; //whether this is a note display or ext. technique
         this.notes = this.stringNotes(_tpt);
@@ -82,7 +85,13 @@ class TrumpetNotation {
         rectMode(CENTER);
         stroke(255);
         strokeWeight(2);
-        fill(dynamicColor(filler));
+        //only fill if it's the highlighted box
+        if (tpt.play == this.p) {
+            fill(dynamicColor(filler));
+        } else {
+            noFill();
+        }
+
         if (this.technique == 'notes') {
             textFont(pitchFont);
             textSize(this.notationSize);
@@ -94,8 +103,8 @@ class TrumpetNotation {
             text('&' + this.notes, this.x, this.y);
         } else if (this.technique == 'ext') {
             textFont(instructionFont);
-            textSize(this.notationSize);
-            rect(this.x, this.y, this.w, this.h);
+            textSize(this.notationSize * 0.5);
+            rect(this.x, this.y, this.w * 0.75, this.h);
             noStroke();
             fill(255);
             textAlign(CENTER, BASELINE);
