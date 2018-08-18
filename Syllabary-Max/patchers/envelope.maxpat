@@ -38,6 +38,19 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 3,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 61.0, 194.0, 62.0, 22.0 ],
+					"style" : "",
+					"text" : "clip~ 0. 1."
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-12",
 					"maxclass" : "message",
 					"numinlets" : 2,
@@ -66,7 +79,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-3",
-					"index" : 2,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -94,7 +107,7 @@
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u338000625"
+					"varname" : "u877001330"
 				}
 
 			}
@@ -102,7 +115,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-17",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -221,7 +234,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-2",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -294,7 +307,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 262.0, 73.0, 50.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 176.466644, 2.0, 43.166687, 22.0 ],
+					"presentation_rect" : [ 176.466644, 2.0, 44.0, 22.0 ],
 					"style" : "",
 					"triangle" : 0,
 					"varname" : "release"
@@ -342,9 +355,9 @@
 					"numinlets" : 5,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "", "" ],
-					"patching_rect" : [ 54.0, 138.0, 138.0, 22.0 ],
+					"patching_rect" : [ 54.0, 138.0, 196.0, 22.0 ],
 					"style" : "",
-					"text" : "adsr~ 100 1000 1. 1000"
+					"text" : "adsr~ 100 1000 1. 1000 @legato 1"
 				}
 
 			}
@@ -453,6 +466,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-4", 2 ],
+					"source" : [ "obj-31", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-54", 0 ],
 					"source" : [ "obj-33", 0 ]
 				}
@@ -460,7 +480,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-33", 0 ],
+					"destination" : [ "obj-4", 0 ],
 					"source" : [ "obj-35", 0 ]
 				}
 
@@ -476,6 +496,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-35", 2 ],
 					"source" : [ "obj-38", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-33", 0 ],
+					"source" : [ "obj-4", 0 ]
 				}
 
 			}
@@ -507,7 +534,16 @@
 				}
 
 			}
- ]
+ ],
+		"dependency_cache" : [ 			{
+				"name" : "env-settings.json",
+				"bootpath" : "~/Dropbox/Scores/Syllabary2018/Syllabary-Max/data",
+				"patcherrelativepath" : "../data",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+ ],
+		"autosave" : 0
 	}
 
 }
