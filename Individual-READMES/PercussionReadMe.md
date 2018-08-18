@@ -2,7 +2,7 @@
 
 Arrange instruments in a row as follows across the top:
 
-5 temple blocks, large suspended cymbal, snare drum (snare off), metal bowl with ~10-15 marbles or large ball bearings inside, glockenspiel *[I'm thinking about changing this to an unpitched instrument]*
+5 temple blocks, large suspended cymbal, snare drum (snare off), medium metal mixing bowl with ~10-15 marbles or large ball bearings inside, glockenspiel *[I'm thinking about changing this to an unpitched instrument]*
 
 ![perc](https://github.com/jasoncharney/syllabary/blob/master/readme-imgs/perc.png?raw=true)
 
@@ -26,3 +26,35 @@ thimble (for index finger): ![thimble](https://github.com/jasoncharney/syllabary
 regular snare stick: ![stick](https://github.com/jasoncharney/syllabary/blob/master/readme-imgs/stick.png?raw=true)
 
 ## *Techniques*
+
+These techniques allow quite a bit of latitude as their meaning is flexible depending on the instrument.
+
+Scrape from an edge of the instrument towards the center, stopping at indicated position: ![scrapetocenter](https://github.com/jasoncharney/syllabary/blob/master/readme-imgs/scrapetocenter.png?raw=true)
+
+Scrape from the center: ![scrapetoedge](https://github.com/jasoncharney/syllabary/blob/master/readme-imgs/scrapetoedge.png?raw=true)
+
+Swirl clockwise on the top of the instrument with the implement. Dynamic may indicate speed, width of movement, or pressure: ![swirlcw](https://github.com/jasoncharney/syllabary/blob/master/readme-imgs/swirlcw.png?raw=true)
+
+Swirl counter-clockwise: ![swirlccw](https://github.com/jasoncharney/syllabary/blob/master/readme-imgs/swirlccw.png?raw=true)
+
+Bounce the implement and allow rebounding with diminuendo over course of the envelope. *Ad lib* rhythm: ![bounce](https://github.com/jasoncharney/syllabary/blob/master/readme-imgs/bounce.png?raw=true) 
+
+Hit center/sounding surface of the instrument with a normal stroke, at the dynamic indicated by the envelope color (see detailed indications below). Repeat stroke only with envelope indication.: ![hitcenter](https://github.com/jasoncharney/syllabary/blob/master/readme-imgs/hitcenter.png?raw=true)
+Temple blocks: hit the center of the indicated (or closest) block.
+Cymbal: hit on top with normal stroke, but around the cymbal as indicated with the position line.
+Snare drum: same as cymbal, moving around head
+Bowl: strike the marbles inside the bowl – otherwise position doesn't really matter.
+Glock: hit any pitch in register indicated by position line
+
+Hit edge (perpendicular to ground) of instrument (see extra indications below): ![hiteedge](https://github.com/jasoncharney/syllabary/blob/master/readme-imgs/hitedge.png?raw=true)
+Snare: on rim, around the edge as indicated by position line
+Bowl: on rim, around the edge as indicated by position line
+
+Splatter: strike with quick, dense, but irregular hits at indicated dynamic and position. ![splatter](https://github.com/jasoncharney/syllabary/blob/master/readme-imgs/smatter.png?raw=true)
+
+
+
+
+
+
+

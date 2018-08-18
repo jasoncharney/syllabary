@@ -5,7 +5,7 @@ var syncDisplay;
 
 //implements
 var beater, chain, hand, mallet, superball, stick, thimble, brush;
-var bounce, hitcenter, hitedge, scrapetocenter, scrapetoedge, smatter, swirlccw, swirlcw;
+var bounce, hitcenter, hitedge, scrapetocenter, scrapetoedge, splatter, swirlccw, swirlcw;
 var percSetup;
 
 var perc, percEnvs;
@@ -155,7 +155,7 @@ function loadGlyphsAndFonts() {
     hitedge = loadImage('glyphs/techniques/hitedge.png');
     scrapetocenter = loadImage('glyphs/techniques/scrapetocenter.png');
     scrapetoedge = loadImage('glyphs/techniques/scrapetocenter.png');
-    smatter = loadImage('glyphs/techniques/smatter.png');
+    splatter = loadImage('glyphs/techniques/splatter.png');
     swirlccw = loadImage('glyphs/techniques/swirlcw.png');
     swirlcw = loadImage('glyphs/techniques/swirlcw.png');
 }
@@ -180,7 +180,7 @@ function resizeImages() {
     hitedge.resize(height * 0.2, 0);
     scrapetocenter.resize(height * 0.2, 0);
     scrapetoedge.resize(height * 0.2, 0);
-    smatter.resize(height * 0.2, 0);
+    splatter.resize(height * 0.2, 0);
     swirlccw.resize(height * 0.2, 0);
     swirlcw.resize(height * 0.2, 0);
 }

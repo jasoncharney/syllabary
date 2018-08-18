@@ -432,7 +432,7 @@
 					"bgfillcolor_type" : "color",
 					"fontsize" : 10.0,
 					"id" : "obj-15",
-					"items" : [ "bounce", ",", "hitcenter", ",", "hitedge", ",", "scrapetocenter", ",", "scrapetoedge", ",", "smatter", ",", "swirlccw", ",", "swirlcw" ],
+					"items" : [ "bounce", ",", "hitcenter", ",", "hitedge", ",", "scrapetocenter", ",", "scrapetoedge", ",", "splatter", ",", "swirlccw", ",", "swirlcw" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -461,7 +461,7 @@
 					"bgfillcolor_type" : "color",
 					"fontsize" : 10.0,
 					"id" : "obj-14",
-					"items" : [ "bounce", ",", "hitcenter", ",", "hitedge", ",", "scrapetocenter", ",", "scrapetoedge", ",", "smatter", ",", "swirlccw", ",", "swirlcw" ],
+					"items" : [ "bounce", ",", "hitcenter", ",", "hitedge", ",", "scrapetocenter", ",", "scrapetoedge", ",", "splatter", ",", "swirlccw", ",", "swirlcw" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -651,11 +651,11 @@
 					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 366.0, 327.0, 58.0, 22.0 ],
 					"restore" : 					{
-						"LHimplement" : [ "superball" ],
-						"LHinstruction" : [ "scrapetoedge" ],
+						"LHimplement" : [ "hand" ],
+						"LHinstruction" : [ "scrapetocenter" ],
 						"LHinstrument" : [ "cymbal" ],
 						"RHimplement" : [ "brush" ],
-						"RHinstruction" : [ "swirlccw" ],
+						"RHinstruction" : [ "bounce" ],
 						"RHinstrument" : [ "drum" ]
 					}
 ,
