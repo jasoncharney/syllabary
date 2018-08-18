@@ -1,35 +1,27 @@
 {
-	"pattrstorage" : 	{
-		"name" : "perciii",
-		"slots" : 		{
-			"1" : 			{
-				"id" : 1,
-				"data" : 				{
-					"LHimplement" : [ "superball" ],
-					"LHinstruction" : [ "scrapetoedge" ],
-					"LHinstrument" : [ "cymbal" ],
-					"RHimplement" : [ "chain" ],
-					"RHinstruction" : [ "swirlcw" ],
-					"RHinstrument" : [ "bowl" ],
-					"envelope::env-settings[1]" : [ -1 ],
-					"envelope[1]::env-settings[1]" : [ -1 ],
-					"percpos::percpos" : [ -1 ]
+	"pattrstorage": {
+		"name": "perciii",
+		"slots": {
+			"1": {
+				"id": 1,
+				"data": {
+					"LHimplement": ["brush"],
+					"LHinstruction": ["swirl"],
+					"LHinstrument": ["drum"],
+					"RHimplement": ["chain"],
+					"RHinstruction": ["swirl"],
+					"RHinstrument": ["bowl"],
 				}
-
-			}
-,
-			"2" : 			{
-				"id" : 2,
-				"data" : 				{
-					"LHimplement" : [ "superball" ],
-					"LHinstruction" : [ "scrapetoedge" ],
-					"LHinstrument" : [ "cymbal" ],
-					"RHimplement" : [ "brush" ],
-					"RHinstruction" : [ "swirlccw" ],
-					"RHinstrument" : [ "drum" ],
-					"envelope::env-settings[1]" : [ -1 ],
-					"envelope[1]::env-settings[1]" : [ -1 ],
-					"percpos::percpos" : [ -1 ]
+			},
+			"2": {
+				"id": 2,
+				"data": {
+					"LHimplement": ["brush"],
+					"LHinstruction": ["scrapetoedge"],
+					"LHinstrument": ["cymbal"],
+					"RHimplement": ["brush"],
+					"RHinstruction": ["swirl"],
+					"RHinstrument": ["drum"],
 				}
 
 			}

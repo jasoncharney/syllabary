@@ -1,33 +1,81 @@
 {
-	"pattrstorage" : 	{
-		"name" : "env-settings[1]",
-		"slots" : 		{
-			"1" : 			{
-				"id" : 1,
-				"data" : 				{
-					"attack" : [ 1000 ],
-					"decay" : [ 200 ],
-					"sustain" : [ 1.0 ],
-					"release" : [ 2000 ],
-					"atarget" : [ 1.0 ]
+	"pattrstorage": {
+		"name": "env-settings",
+		"slots": {
+			"1": {
+				"id": 1,
+				"data": {
+					"attack": [10],
+					"decay": [10],
+					"sustain": [0.5],
+					"release": [2000]
+				}
+			},
+			"2": {
+				"id": 2,
+				"data": {
+					"attack": [10],
+					"decay": [2000],
+					"sustain": [0.5],
+					"release": [5000]
 				}
 
-			}
-,
-			"2" : 			{
-				"id" : 2,
-				"data" : 				{
-					"attack" : [ 4000 ],
-					"decay" : [ 2000 ],
-					"sustain" : [ 0.5 ],
-					"release" : [ 5000 ],
-					"atarget" : [ 1.0 ]
+			},
+			"3": {
+				"id": 3,
+				"data": {
+					"attack": [10],
+					"decay": [2000],
+					"sustain": [0.5],
+					"release": [5000]
 				}
 
+			},
+			"4": {
+				"id": 4,
+				"data": {
+					"attack": [2000],
+					"decay": [2000],
+					"sustain": [0.5],
+					"release": [5000]
+				}
+			},
+			"5": {
+				"id": 5,
+				"data": {
+					"attack": [2000],
+					"decay": [2000],
+					"sustain": [1],
+					"release": [5000]
+				}
+			},
+			"6": {
+				"id": 6,
+				"data": {
+					"attack": [100],
+					"decay": [2000],
+					"sustain": [1],
+					"release": [6000]
+				}
+			},
+			"7": {
+				"id": 7,
+				"data": {
+					"attack": [4000],
+					"decay": [2000],
+					"sustain": [1],
+					"release": [6000]
+				}
+			},
+			"8": {
+				"id": 8,
+				"data": {
+					"attack": [10],
+					"decay": [100],
+					"sustain": [0.5],
+					"release": [100]
+				}
 			}
-
 		}
-
 	}
-
 }

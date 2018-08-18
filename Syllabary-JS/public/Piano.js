@@ -100,20 +100,23 @@ class PianoNotation {
         noStroke();
         fill(255);
         textAlign(CENTER);
-        if (_rhythm == '32n') {
+        if (_rhythm == 32) {
             rhythDisplay = '';
         }
-        if (_rhythm == '16n') {
+        if (_rhythm == 16) {
             rhythDisplay = '';
         }
-        if (_rhythm == '4n') {
+        if (_rhythm == 4) {
             rhythDisplay = '';
         }
-        if (_rhythm == '8n') {
+        if (_rhythm == 8) {
             rhythDisplay = '';
         }
-        if (_rhythm == '2n') {
+        if (_rhythm == 2) {
             rhythDisplay = '';
+        }
+        if (_rhythm == 1) {
+            rhythDisplay = '';
         }
         text(rhythDisplay, this.x, this.y + (0.5 * this.h - (textAscent() * 0.4)));
     }

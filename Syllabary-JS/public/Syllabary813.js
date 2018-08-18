@@ -156,8 +156,7 @@ function loadGlyphsAndFonts() {
     scrapetocenter = loadImage('glyphs/techniques/scrapetocenter.png');
     scrapetoedge = loadImage('glyphs/techniques/scrapetocenter.png');
     splatter = loadImage('glyphs/techniques/splatter.png');
-    swirlccw = loadImage('glyphs/techniques/swirlcw.png');
-    swirlcw = loadImage('glyphs/techniques/swirlcw.png');
+    swirl = loadImage('glyphs/techniques/swirl.png');
 }
 
 function resizeImages() {
@@ -181,8 +180,7 @@ function resizeImages() {
     scrapetocenter.resize(height * 0.2, 0);
     scrapetoedge.resize(height * 0.2, 0);
     splatter.resize(height * 0.2, 0);
-    swirlccw.resize(height * 0.2, 0);
-    swirlcw.resize(height * 0.2, 0);
+    swirl.resize(height * 0.2, 0);
 }
 
 function dynamicColor(d) {

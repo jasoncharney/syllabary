@@ -80,7 +80,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-45",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -176,7 +176,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-33",
-					"index" : 2,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -203,7 +203,7 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 614.0, 437.0, 88.0, 54.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 212.0, 24.0, 88.0, 54.0 ],
+					"presentation_rect" : [ 206.0, 27.0, 88.0, 54.0 ],
 					"varname" : "percpos",
 					"viewvisibility" : 1
 				}
@@ -213,7 +213,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-30",
-					"index" : 5,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -227,7 +227,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-29",
-					"index" : 3,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -241,7 +241,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-28",
-					"index" : 6,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -255,7 +255,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-27",
-					"index" : 4,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -273,7 +273,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 31.5, 216.0, 150.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 302.0, 83.0, 19.0, 20.0 ],
+					"presentation_rect" : [ 296.0, 69.75, 19.0, 20.0 ],
 					"style" : "",
 					"text" : "R"
 				}
@@ -287,7 +287,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 56.0, 237.0, 150.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 302.0, 31.0, 19.0, 20.0 ],
+					"presentation_rect" : [ 296.0, 21.0, 19.0, 20.0 ],
 					"style" : "",
 					"text" : "L"
 				}
@@ -310,7 +310,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 839.0, 257.0, 278.0, 54.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 310.0, 58.0, 350.0, 45.0 ],
+					"presentation_rect" : [ 311.0, 54.5, 207.0, 50.5 ],
 					"varname" : "envelope[1]",
 					"viewvisibility" : 1
 				}
@@ -333,7 +333,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1137.0, 245.0, 360.0, 59.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 310.0, 5.0, 350.0, 46.0 ],
+					"presentation_rect" : [ 310.0, 5.0, 207.0, 52.0 ],
 					"varname" : "envelope",
 					"viewvisibility" : 1
 				}
@@ -382,7 +382,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-19",
-					"index" : 2,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -622,7 +622,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 230.0, 113.0, 150.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 144.0, 5.0, 26.0, 20.0 ],
+					"presentation_rect" : [ 159.5, 5.0, 26.0, 20.0 ],
 					"style" : "",
 					"text" : "RH"
 				}
@@ -636,7 +636,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 140.0, 110.0, 150.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 86.0, 3.0, 26.0, 20.0 ],
+					"presentation_rect" : [ 101.5, 5.0, 26.0, 20.0 ],
 					"style" : "",
 					"text" : "LH"
 				}
@@ -661,7 +661,7 @@
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u997000614"
+					"varname" : "u646002764"
 				}
 
 			}
@@ -768,7 +768,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-1",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -790,7 +790,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 82.0, 16.0, 128.0, 128.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 2.0, 1.125, 662.0, 107.875 ],
+					"presentation_rect" : [ 2.0, 1.125, 516.0, 107.875 ],
 					"proportion" : 0.39,
 					"style" : ""
 				}
@@ -1144,7 +1144,37 @@
 				}
 
 			}
- ]
+ ],
+		"dependency_cache" : [ 			{
+				"name" : "envelope.maxpat",
+				"bootpath" : "~/Dropbox/Scores/Syllabary2018/Syllabary-Max/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "percpos.maxpat",
+				"bootpath" : "~/Dropbox/Scores/Syllabary2018/Syllabary-Max/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "percpos.json",
+				"bootpath" : "~/Dropbox/Scores/Syllabary2018/Syllabary-Max/data",
+				"patcherrelativepath" : "../data",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "perciii.json",
+				"bootpath" : "~/Dropbox/Scores/Syllabary2018/Syllabary-Max/data",
+				"patcherrelativepath" : "../data",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+ ],
+		"autosave" : 0
 	}
 
 }
