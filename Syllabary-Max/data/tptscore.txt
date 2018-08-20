@@ -1,0 +1,7 @@
+------------------------ 1;
+0 1 tptSettings 1;
+tptAir ADSR;
+tptLFO 5; 
+tptenvTrigs 5;
+tptADSR 5;
+tptAtarg 0.85;

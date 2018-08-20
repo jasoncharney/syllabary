@@ -28,24 +28,34 @@ class PianoNotation {
         this.w;
         this.h = h;
         this.notes;
+        this.accflag;
         this.notationSize = this.h * 0.3;
-        this.chord; //TODO: figure out how to display AS A CHORD rather than the bracket bullshit
+        this.chord;
     }
-
     boxUpdate(pno) {
         this.x = width * pno.register;
         this.chord = pno.chord;
         this.notes = this.stringNotes(pno.notes);
+        this.accflag = pno.accflag; //accidental flag: 0 for flats, 1 for sharps
     }
 
     //return a concatenated string from pitch classes -> notes for the pitch font.
     stringNotes(_notes) {
         var n;
         if (typeof _notes == 'number') { //single value will break array counting.
-            n = pitchClass[_notes];
+            if (this.accflag == 0) {
+                n = pitchClassF[_notes];
+            } else if (this.accflag == 1) {
+                n = pitchClassS[_notes];
+            }
         } else {
-            n = _notes.map(x => pitchClass[x]);
-            n = str(n.join(''));
+            if (this.accflag == 0) {
+                n = _notes.map(x => pitchClassF[x]);
+                n = str(n.join(''));
+            } else if (this.accflag == 1) {
+                n = _notes.map(x => pitchClassS[x]);
+                n = str(n.join(''));
+            }
         }
         return n;
     }

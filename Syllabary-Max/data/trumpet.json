@@ -1,0 +1,22 @@
+{
+	"pattrstorage": {
+		"name": "trumpet",
+		"slots": {
+			"1": {
+				"id": 1,
+				"data": {
+					"Ltechnique": ["ruffle"],
+					"RTechnique": ["notes"],
+					"articulation": ["sfort"],
+					"noteswitch-trigs": [5],
+					"pitchesL": [0],
+					"pitchesR": [1]
+				}
+
+			}
+
+		}
+
+	}
+
+}

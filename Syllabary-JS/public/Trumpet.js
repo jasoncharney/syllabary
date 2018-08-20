@@ -24,12 +24,12 @@ function drawValves() {
     strokeWeight(4);
     fill(dynamicColor(tptEnv));
     if (tpt.play == 'R') {
-        textAlign(LEFT);
-        text('', width / 2 + height * 0.1, height * 0.5);
+        textAlign(CENTER, TOP);
+        text('', width * 0.75, height * 0.5 - this.h * 0.6);
     }
     if (tpt.play == 'L') {
-        textAlign(RIGHT);
-        text('', width / 2 - height * 0.1, height * 0.5);
+        textAlign(CENTER, TOP);
+        text('', width * 0.25, height * 0.5 - this.h * 0.6);
     }
 }
 

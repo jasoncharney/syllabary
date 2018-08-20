@@ -11,6 +11,7 @@ function drawImplements() {
     imageMode(CENTER);
     noFill();
     stroke(255);
+    strokeWeight(2);
     rect(width * 0.4, height * 0.85, height * 0.2, height * 0.2);
     rect(width * 0.6, height * 0.85, height * 0.2, height * 0.2);
     image(eval(perc.LH.implement), width * 0.4, height * 0.85);
@@ -20,6 +21,7 @@ function drawImplements() {
 function drawTechniques() {
     noFill();
     stroke(255);
+    strokeWeight(2);
     rect(width * 0.4, height * 0.6, height * 0.2, height * 0.2);
     rect(width * 0.6, height * 0.6, height * 0.2, height * 0.2);
 

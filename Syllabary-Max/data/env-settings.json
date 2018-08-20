@@ -5,75 +5,75 @@
 			"1": {
 				"id": 1,
 				"data": {
-					"attack": [10],
-					"decay": [10],
-					"sustain": [0.5],
-					"release": [2000]
+					"attack": [20],
+					"decay": [20],
+					"sustain": [1],
+					"release": [50]
 				}
 			},
 			"2": {
 				"id": 2,
 				"data": {
-					"attack": [10],
-					"decay": [2000],
-					"sustain": [0.5],
-					"release": [5000]
+					"attack": [20],
+					"decay": [20],
+					"sustain": [1],
+					"release": [1000]
 				}
 
 			},
 			"3": {
 				"id": 3,
 				"data": {
-					"attack": [10],
-					"decay": [2000],
-					"sustain": [0.5],
-					"release": [5000]
+					"attack": [20],
+					"decay": [20],
+					"sustain": [1],
+					"release": [4000]
 				}
 
 			},
 			"4": {
 				"id": 4,
 				"data": {
-					"attack": [2000],
-					"decay": [2000],
-					"sustain": [0.5],
-					"release": [5000]
+					"attack": [20],
+					"decay": [20],
+					"sustain": [1],
+					"release": [10000]
 				}
 			},
 			"5": {
 				"id": 5,
 				"data": {
 					"attack": [2000],
-					"decay": [2000],
+					"decay": [20],
 					"sustain": [1],
-					"release": [5000]
+					"release": [1000]
 				}
 			},
 			"6": {
 				"id": 6,
 				"data": {
-					"attack": [100],
-					"decay": [2000],
+					"attack": [4000],
+					"decay": [20],
 					"sustain": [1],
-					"release": [6000]
+					"release": [4000]
 				}
 			},
 			"7": {
 				"id": 7,
 				"data": {
-					"attack": [4000],
-					"decay": [2000],
+					"attack": [10000],
+					"decay": [20],
 					"sustain": [1],
-					"release": [6000]
+					"release": [10000]
 				}
 			},
 			"8": {
 				"id": 8,
 				"data": {
-					"attack": [10],
-					"decay": [100],
+					"attack": [10000],
+					"decay": [4000],
 					"sustain": [0.5],
-					"release": [100]
+					"release": [10000]
 				}
 			}
 		}

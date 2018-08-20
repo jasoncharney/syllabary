@@ -10,7 +10,7 @@
 					"LHinstrument": ["drum"],
 					"RHimplement": ["chain"],
 					"RHinstruction": ["swirl"],
-					"RHinstrument": ["bowl"],
+					"RHinstrument": ["bowl"]
 				}
 			},
 			"2": {
@@ -19,9 +19,21 @@
 					"LHimplement": ["brush"],
 					"LHinstruction": ["scrapetoedge"],
 					"LHinstrument": ["cymbal"],
-					"RHimplement": ["brush"],
+					"RHimplement": ["chain"],
 					"RHinstruction": ["swirl"],
-					"RHinstrument": ["drum"],
+					"RHinstrument": ["drum"]
+				}
+
+			},
+			"3": {
+				"id": 3,
+				"data": {
+					"LHimplement": ["brush"],
+					"LHinstruction": ["splatter"],
+					"LHinstrument": ["cymbal"],
+					"RHimplement": ["mallet"],
+					"RHinstruction": ["bounce"],
+					"RHinstrument": ["drum"]
 				}
 
 			}

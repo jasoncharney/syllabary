@@ -27,7 +27,9 @@ var tptR;
 var tptPlay;
 var tptEnv;
 
-var pitchClass = ['a', 'A', 's', 'S', 'd', 'f', 'F', 'g', 'G', 'h', 'H', 'j'];
+//pitch arrays. Sharps, flats.
+var pitchClassF = ['a', 'ß', 's', '∂', 'd', 'f', '©', 'g', '˙', 'h', '∆', 'j'];
+var pitchClassS = ['a', 'A', 's', 'S', 'd', 'f', 'F', 'g', 'G', 'h', 'H', 'j'];
 var trumpetPitches = ['b', 'B', 'b', 'N', 'm', 'a', 'A', 's', 'S', 'd', 'f', 'F', 'g', 'G', 'h', 'H', 'j', 'q', 'Q', 'w', 'W', 'e', 'r', 'R', 't', 'T', 'y', 'Y', 'u', '1'];
 
 //height/width units
@@ -154,7 +156,7 @@ function loadGlyphsAndFonts() {
     hitcenter = loadImage('glyphs/techniques/hitcenter.png');
     hitedge = loadImage('glyphs/techniques/hitedge.png');
     scrapetocenter = loadImage('glyphs/techniques/scrapetocenter.png');
-    scrapetoedge = loadImage('glyphs/techniques/scrapetocenter.png');
+    scrapetoedge = loadImage('glyphs/techniques/scrapetoedge.png');
     splatter = loadImage('glyphs/techniques/splatter.png');
     swirl = loadImage('glyphs/techniques/swirl.png');
 }

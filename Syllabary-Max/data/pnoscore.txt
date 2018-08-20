@@ -1,0 +1,13 @@
+------------------------ 1;
+0 1 0_pnopitch 0;
+1_pnopitch 1;
+2_pnopitch 0;
+3_pnopitch 0;
+0_pnoreg 1;
+1_pnoreg 2;
+2_pnoreg 3;
+3_pnoreg 3;
+0_pnotrig 5;
+1_pnotrig 6;
+2_pnotrig off;
+3_pnotrig off;

@@ -56,7 +56,6 @@ function pianoButtonPushed() {
     socket.on('pianoSettings', function (msg) {
 
         pianoBoxes = [msg.box0, msg.box1, msg.box2, msg.box3]
-
         if (initialized == false) {
             initialized = true;
         }

@@ -1,29 +1,37 @@
 {
-	"pattrstorage" : 	{
-		"name" : "piano-regs",
-		"slots" : 		{
-			"1" : 			{
-				"id" : 1,
-				"data" : 				{
-					"envelope::env-settings[1]" : [ 1 ],
-					"0_chord" : [ 1 ],
-					"0_follow" : [ 1 ],
-					"0_register" : [ 0.5 ],
-					"0_rhythm" : [ 1 ]
+	"pattrstorage": {
+		"name": "piano-regs",
+		"slots": {
+			"1": {
+				"id": 1,
+				"data": {
+					"accflag": [0],
+					"chord": [1],
+					"follow": [1],
+					"register": [0.75],
+					"rhythm": ["1"]
 				}
 
-			}
-,
-			"2" : 			{
-				"id" : 2,
-				"data" : 				{
-					"envelope::env-settings[1]" : [ 1 ],
-					"0_chord" : [ 0 ],
-					"0_follow" : [ 0 ],
-					"0_register" : [ 0.77 ],
-					"0_rhythm" : [ 1 ]
+			},
+			"2": {
+				"id": 2,
+				"data": {
+					"accflag": [0],
+					"chord": [0],
+					"follow": [0],
+					"register": [0.9],
+					"rhythm": ["2"]
 				}
-
+			},
+			"3": {
+				"id": 3,
+				"data": {
+					"accflag": [0],
+					"chord": [0],
+					"follow": [0],
+					"register": [0.1],
+					"rhythm": ["2"]
+				}
 			}
 
 		}
